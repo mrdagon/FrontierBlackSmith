@@ -5907,8 +5907,7 @@ int FUN::eve_syori(int E/*ƒCƒxƒ“ƒg”­¶ˆ—*/){
 
 	//‰Šú‰»ˆ—
 	int skip_cnt = 0;
-	EVE_FUN::Sin().reset();
-	
+	EVE_FUN::Sin().reset();	
 	EVE_FUN::Sin().eve_next = 1;
 
 	while(1)

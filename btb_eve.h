@@ -1,6 +1,8 @@
+ï»¿//Copyright Â© 2015 (Â´ï½¥@ï½¥)
+//[License]GNU Affero General Public License, version 3
+//[Contact]http://tacoika.blog87.fc2.com/
 #pragma once
 #include "btb.h"
-//using namespace fbs;
 
 #define NEXT break;case
 #define START int L=0;if(EVE_FUN::Sin().eve_line == 0){
@@ -12,7 +14,7 @@ void EVE_FUN::eve_test()
 	while(1)
 	{
 		fun.eve_syori(1);
-		//ƒCƒxƒ“ƒgƒ`ƒFƒbƒN
+		//ã‚¤ãƒ™ãƒ³ãƒˆãƒã‚§ãƒƒã‚¯
 		if(fun.err_c()== -1) break;
 	}
 }
@@ -26,84 +28,84 @@ int EVE_FUN::eve_switch(int E)
 
 void EVE_FUN::eve_efe(int E)
 {
-	//I—¹ŒãŒø‰ÊAƒ`ƒ…[ƒgƒŠƒAƒ‹“±“ü“™
+	//çµ‚äº†å¾ŒåŠ¹æœã€ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«å°å…¥ç­‰
 	switch( E )
 	{
-		case 23://ŠJ“X
+		case 23://é–‹åº—
 			wind.ok[1] = 1;
 			wind.ok[5] = 1;	
 			fun.tutorial(0);
 		break;
-		case 24://‚Â‚é‚Í‚µ»‘¢ŠJn
+		case 24://ã¤ã‚‹ã¯ã—è£½é€ é–‹å§‹
 			shop[0].wep_cre[99] = 2;
 			fun.list_pw(99);
 			shop[0].nougu_req = 30;			
 			wind.ok[6] = 1;
 			fun.tutorial(1);
 		break;
-		case 25://‰c‹Æ‹–‰Â‚`
+		case 25://å–¶æ¥­è¨±å¯ï¼¡
 			data.jinkou_up = 5;
 			for (int i = 0; i< 10; i++)	fun.make_hunter(1);
 			wind.ok[0] = 1;
 			wind.ok[2] = 1;
 			wind.ok[4] = 1;
 		break;
-		case 28://’²¸ë—Â
-			fun.tutorial(5);//ƒnƒ“ƒ^[‚Ì¶Šˆ
+		case 28://èª¿æŸ»ç‹©çŒŸ
+			fun.tutorial(5);//ãƒãƒ³ã‚¿ãƒ¼ã®ç”Ÿæ´»
 		break;
-		case 31://ƒgƒEƒcƒOÌ—p
+		case 31://ãƒˆã‚¦ãƒ„ã‚°æ¡ç”¨
 			data.hirameki_rate = 100;
 			shop[0].hirameki_dayb = 100;
 			fun.tutorial(3);
 		break;
-		case 33://‚Â‚é‚Í‚µ”[•i
+		case 33://ã¤ã‚‹ã¯ã—ç´å“
 			wind.ok[8] = 1;
 			shop[P].nougu_req = 0;
 			fun.tutorial(7);
 		break;
-		case 34://‚Q‚©Œ–Ú-ƒ‹ƒ‹ƒtƒ@’Ç‰Á
+		case 34://ï¼’ã‹æœˆç›®-ãƒ«ãƒ«ãƒ•ã‚¡è¿½åŠ 
 			emp[2].plus(0);
 			emp[4].plus(0);
 			shop[0].nougu_req = 0;
 			wind.ok[7] = 1;
 			fun.tutorial(6);
 		break;
-		case 35://Œo‰cíp
+		case 35://çµŒå–¶æˆ¦è¡“
 			wind.ok[9] = 1;
 			shop[P].n_mp = 50;
 			shop[P].bumon_lv[0] = 1;
 			fun.tutorial(10);
 		break;
-		case 36://ƒXƒ^ƒCƒg‚Ì‹@
+		case 36://ã‚¹ã‚¿ã‚¤ãƒˆã®è¦–å¯Ÿ
 			shop[0].nougu_req = 60;
 		break;
-		case 37://H–•”
+		case 37://å·¥äº‹éƒ¨
 			for(int S=0;S<5;S++){shop[S].bumon_lv[2] = 1;}
 			fun.tutorial(12);
 		break;
-		case 38://–‚b‚ÌŒ¤‹†
+		case 38://é­”ç£ã®ç ”ç©¶
 			wind.ok[11] = 1;
 			data.jinkou_up = 100;
 			fun.tutorial(2);
 		break;
-		case 40://Œo‰cOƒ–Œ–Ú
+		case 40://çµŒå–¶ä¸‰ãƒ¶æœˆç›®
 			data.jinkou_up = 40;
 			wind.ok[3] = 1;
 			fun.tutorial(4);
 			fun.tutorial(8);
 		break;
-		case 44://à–±•”--‘‘
+		case 44://è²¡å‹™éƒ¨--å¢—è³‡
 			for(int S=0;S<5;S++){shop[S].bumon_lv[1] = 1;}
 			fun.tutorial(11);
 		break;
-		case 45://ƒwƒ‹ƒƒXÌ—p
+		case 45://ãƒ˜ãƒ«ãƒ¡ã‚¹æ¡ç”¨
 			emp[6].plus(0);
 		break;
-		case 46://ŠJ”­•”
+		case 46://é–‹ç™ºéƒ¨
 			for(int S=0;S<5;S++){shop[S].bumon_lv[3] = 1;}
 			fun.tutorial(13);
 		break;
-		case 47://ƒJƒmƒ“H–[
+		case 47://ã‚«ãƒãƒ³å·¥æˆ¿
 			data.shop_cnt = 2;
 			shop[1].create_lv[0] = 5;
 			shop[1].create_lv[1] = 6;
@@ -121,13 +123,13 @@ void EVE_FUN::eve_efe(int E)
 			fun.tutorial(9);
 			data.taiguu_ok = 1;
 		break;
-		case 48://¸‹‹—v‹
+		case 48://æ˜‡çµ¦è¦æ±‚
 		break;
-		case 50://é“`•”
+		case 50://å®£ä¼éƒ¨
 			for(int S=0;S<5;S++){shop[S].bumon_lv[4] = 1;}
 			fun.tutorial(14);
 		break;
-		case 52://ƒzƒƒCƒgƒiƒCƒg			
+		case 52://ãƒ›ãƒ¯ã‚¤ãƒˆãƒŠã‚¤ãƒˆ			
 			data.shop_cnt = 3;
 			shop[2].create_lv[0] = 8;
 			shop[2].create_lv[1] = 8;
@@ -143,7 +145,7 @@ void EVE_FUN::eve_efe(int E)
 			shop[2].senden_syori(50,100);
 			fun.zaiko_cnt();
 		break;
-		case 56://‹ÉŒ’b–è
+		case 56://æ¥µæœˆé›å†¶
 			data.shop_cnt = 4;
 			shop[3].create_lv[0] = 16;
 			shop[3].create_lv[1] = 10;
@@ -159,13 +161,13 @@ void EVE_FUN::eve_efe(int E)
 			shop[3].senden_syori(50,100);
 			fun.zaiko_cnt();
 		break;
-		case 54://Õ‚è•z
-			fun.tutorial(15);//‚Â‚é‚Í‚µ‚ñƒsƒbƒN
+		case 54://ç¥­ã‚Šå¸ƒå‘Š
+			fun.tutorial(15);//ã¤ã‚‹ã¯ã—ã‚“ãƒ”ãƒƒã‚¯
 		break;
-		case 60://—³‚Ì“µ
+		case 60://ç«œã®ç³
 			data.jinkou_up = 100;
 		break;
-		case 64://ƒSƒ‰ƒ“ƒmƒXo“X
+		case 64://ã‚´ãƒ©ãƒ³ãƒã‚¹å‡ºåº—
 			data.shop_cnt = 5;
 			shop[4].create_lv[0] = 5;
 			shop[4].create_lv[1] = 5;
@@ -181,7 +183,7 @@ void EVE_FUN::eve_efe(int E)
 			shop[4].senden_syori(50,100);
 			fun.zaiko_cnt();
 		break;
-		case 65://‘O•ÒI—¹
+		case 65://å‰ç·¨çµ‚äº†
 			data.jinkou_up = 50;
 			fun.tutorial(19);
 			sys.clear = 1;
@@ -191,7 +193,7 @@ void EVE_FUN::eve_efe(int E)
 
 bool EVE_FUN::eve_ok(int E)
 {
-	//“ÁêğŒ”»’è
+	//ç‰¹æ®Šæ¡ä»¶åˆ¤å®š
 	switch( E )
 	{
 		case 0:
@@ -203,27 +205,27 @@ bool EVE_FUN::eve_ok(int E)
 	return true;
 }
 
-/*”wŒiØ‚è‘Ö‚¦*/
+/*èƒŒæ™¯åˆ‡ã‚Šæ›¿ãˆ*/
 int EVE_FUN::back_change(EStage estage , int T )
 {
 	switch( estage )
 	{
-		case EStage::“XŠO:
-			EVE_FUN::Sin().eve_name = "“XŠO";
+		case EStage::åº—å¤–:
+			EVE_FUN::Sin().eve_name = "åº—å¤–";
 		break;
-		case EStage::“X“à:
-			EVE_FUN::Sin().eve_name = "“X“à";
+		case EStage::åº—å†…:
+			EVE_FUN::Sin().eve_name = "åº—å†…";
 		break;
-		case EStage::‰ï‹cº:
-			EVE_FUN::Sin().eve_name = "––±Š";
+		case EStage::ä¼šè­°å®¤:
+			EVE_FUN::Sin().eve_name = "äº‹å‹™æ‰€";
 		break;
-		case EStage::–ğŠ:
-			EVE_FUN::Sin().eve_name = "–ğê";
+		case EStage::å½¹æ‰€:
+			EVE_FUN::Sin().eve_name = "å½¹å ´";
 		break;
-		case EStage::Lê:
-			EVE_FUN::Sin().eve_name = "Lê";
+		case EStage::åºƒå ´:
+			EVE_FUN::Sin().eve_name = "åºƒå ´";
 		break;
-		case EStage::ğê:
+		case EStage::é…’å ´:
 			EVE_FUN::Sin().eve_name = "Bar";
 		break;
 	}
@@ -245,11 +247,12 @@ void EVE_FUN::set_end()
 {
 	this->eve_end = 1;
 }
-/*ƒAƒNƒ^[‘€ì*/
+/*ã‚¢ã‚¯ã‚¿ãƒ¼æ“ä½œ*/
 
+//ç§»å‹•ã€å–‹ã‚‹ã€ä½ç½®å¤‰æ›´ã€å‘ãå¤‰æ›´
 void ACTER::Mes(const char *str ){
 
-	if( str[0] == NULL )//‹ó‚Ìê‡ 
+	if( str[0] == NULL )//ç©ºã®å ´åˆ 
 	{
 		this->huki_w = 0;
 		return;
@@ -268,19 +271,19 @@ void ACTER::Mes(const char *str ){
 	huki_mes[1][0] = NULL;
 	huki_mes[2][0] = NULL;
 
-	N[0] = strr.find( "—" );
+	N[0] = strr.find( "ï¼ " );
 	sprintf_s(huki_mes[0], strr.substr(0,N[0]).c_str() );
 	
 	if( N[0] != std::string::npos )
 	{
 		lines = 2;
-		N[1] = strr.find( "—" , N[0]+2 );
+		N[1] = strr.find( "ï¼ " , N[0]+2 );
 		sprintf_s(huki_mes[1], strr.substr(N[0]+2,N[1]-N[0]-2).c_str() );
 
 		if( N[1] != std::string::npos )
 		{
 			lines = 3;
-			N[2] = strr.find( "—" , N[1]+2 );
+			N[2] = strr.find( "ï¼ " , N[1]+2 );
 			sprintf_s(huki_mes[2], strr.substr(N[1]+2,N[2]-N[1]).c_str() );
 		}
 	}
@@ -298,7 +301,7 @@ void ACTER::Mes(const char *str ){
 		huki_h += SY;
 	}
 }
-void ACTER::Set(EChara chara , double  X,double  Y,DI M,bool isUp)
+void ACTER::Set(double  X,double  Y,DI M,bool isUp)
 {
 	emo = -1;
 	mx = 0;
@@ -323,10 +326,10 @@ void ACTER::Move(double MX,double MY,int S )
 	huki_w = 0;
 	sp = S;
 
-	if(mx > 0 ) m = (int)DI::‰E;
-	if(mx < 0 ) m = (int)DI::¶;
-	if(my > 0 ) m = (int)DI::‰º;
-	if(my < 0 ) m = (int)DI::ã;
+	if(mx > 0 ) m = (int)DI::å³;
+	if(mx < 0 ) m = (int)DI::å·¦;
+	if(my > 0 ) m = (int)DI::ä¸‹;
+	if(my < 0 ) m = (int)DI::ä¸Š;
 
 	EVE_FUN::Sin().eve_wait = int(abs(MX+MY)*32/S);
 	EVE_FUN::Sin().eve_next = 1;
@@ -349,115 +352,61 @@ void ACTER::HukiUp(bool isUp)
 {
 	this->huki_ud = 1 - isUp;
 }
-
-void ACTER::E‹Á‚«()
+//å¹ãå‡ºã—å¤‰æ›´
+void ACTER::Eé©šã()
 {
-	Emo(EM::‹Á‚«);
+	Emo(EM::é©šã);
 }
-void ACTER::E‰¹•„()
+void ACTER::EéŸ³ç¬¦()
 {
-	Emo(EM::‰¹•„);
+	Emo(EM::éŸ³ç¬¦);
 }
-void ACTER::E¢˜f()
+void ACTER::Eå›°æƒ‘()
 {
-	Emo(EM::¢˜f);
+	Emo(EM::å›°æƒ‘);
 }
-void ACTER::E•ğ‚ê()
+void ACTER::Eå‘†ã‚Œ()
 {
-	Emo(EM::•ğ‚ê);
+	Emo(EM::å‘†ã‚Œ);
 }
-void ACTER::E“{‚è()
+void ACTER::Eæ€’ã‚Š()
 {
-	Emo(EM::“{‚è);
+	Emo(EM::æ€’ã‚Š);
 }
-void ACTER::Eƒn[ƒg()
+void ACTER::Eãƒãƒ¼ãƒˆ()
 {
-	Emo(EM::ƒn[ƒg);
+	Emo(EM::ãƒãƒ¼ãƒˆ);
 }
-void ACTER::EƒhƒNƒ()
+void ACTER::Eãƒ‰ã‚¯ãƒ­()
 {
-	Emo(EM::ƒhƒNƒ);
+	Emo(EM::ãƒ‰ã‚¯ãƒ­);
 }
-void ACTER::E–°‚è()
+void ACTER::Eçœ ã‚Š()
 {
-	Emo(EM::–°‚è);
+	Emo(EM::çœ ã‚Š);
 }
-void ACTER::E‹^–â()
+void ACTER::Eç–‘å•()
 {
-	Emo(EM::‹^–â);
+	Emo(EM::ç–‘å•);
 }
-void ACTER::Evl()
+void ACTER::Eæ€è€ƒ()
 {
-	Emo(EM::vl);
+	Emo(EM::æ€è€ƒ);
 }
-
+//å‘ãå¤‰æ›´
 void ACTER::Up()
 {
-	Direct(DI::ã);
+	Direct(DI::ä¸Š);
 }
 void ACTER::Down()
 {
-	Direct(DI::‰º);
+	Direct(DI::ä¸‹);
 }
 void ACTER::Left()
 {
-	Direct(DI::¶);
+	Direct(DI::å·¦);
 }
 void ACTER::Right()
 {
-	Direct(DI::‰E);
-}
-
-int EVE_SUB::Contest()
-{
-	int point[5] = {0,0,0,0,0};
-	int max = 0;
-	int top = 0;
-
-	for (int h = 0; h < 100; h++)
-	{
-		int n = GetRand(data.jinkou_max);
-
-		max = 0;
-		top = 0;
-		for (int s = 0; s < data.shop_cnt; s++)
-		{
-			//“¾“_ŒvZ
-			int buf = hun[h].sinazoroe(s);
-			if (buf >= max)
-			{
-				max = buf;
-				top = s;
-			}
-		}
-		point[top]++;
-	}
-	
-	//˜d˜GŒø‰Ê
-	for (int s = 0; s < data.shop_cnt; s++)
-	{
-		point[s] += shop[s].bukimatu_b;
-		shop[s].bukimatu_b = 0;
-	}
-
-	//ƒCƒxƒ“ƒgƒ‚[ƒhŒø‰Ê
-	if (data.mode == 0)
-	{
-		point[2] += 10;
-		point[4] += 9;
-	}
-
-	max = 0;
-	top = 0;
-
-	for (int s = 0; s < data.shop_cnt; s++)
-	{
-		if (point[s] >= max)
-		{
-			max = point[s];
-			top = s;
-		}
-	}
-
-	return top;
+	Direct(DI::å³);
 }
