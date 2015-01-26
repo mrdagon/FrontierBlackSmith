@@ -5936,18 +5936,18 @@ int FUN::eve_syori(int E/*ƒCƒxƒ“ƒg”­¶ˆ—*/){
 		}
 
 		bool isMoved = true;
-		for( int i=0;i<32;i++)
+		for( int i=0;i<36;i++)
 		{
-			if( act[i].mx != 0 || act[i].my != 0 ) isMoved = false;
+			if( act[i]->mx != 0 || act[i]->my != 0 ) isMoved = false;
 		}
 
 		if( EVE_FUN::Sin().eve_wait<=0 && EVE_FUN::Sin().eve_next == 1 && isMoved)
 		{
 			EVE_FUN::Sin().eve_next = 0;
-			for(int i=0;i<32;i++)
+			for(int i=0;i<36;i++)
 			{
-				act[i].emo = -1;
-				act[i].huki_w = 0;
+				act[i]->emo = -1;
+				act[i]->huki_w = 0;
 			}
 			EVE_FUN::Sin().eve_switch(E);
 			EVE_FUN::Sin().eve_line++;

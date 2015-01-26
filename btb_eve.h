@@ -19,6 +19,77 @@ void EVE_FUN::eve_test()
 	}
 }
 
+void EVE_FUN::reset()
+{
+	act[0] = &セオ;
+	act[1] = &ルルファ;
+	act[2] = &ファクト;
+	act[3] = &トウツグ;
+	act[4] = &ヘルメス;
+
+	act[5] = &カノン;//カノン工房関係
+
+	act[6] = &ヒトフリサイ;//極月関係
+	act[7] = &ジンイチ;
+	act[8] = &ケンヒメ;
+
+	act[9] = &リークオ;//ゴランノス関連
+	act[10] = &ポンサー;
+	act[11] = &カクシャ;
+
+	act[12] = &シロ;//ハンター
+
+	act[13] = &ニット;//ルルファ兄
+	act[14] = &レイブル;
+
+	act[15] = &サンダー;//がらの悪いハンター二人組み
+	act[16] = &ファイア;
+
+	act[17] = &ファイタ;//新米ハンター達
+	act[18] = &メディ;
+	act[19] = &パラコ;
+	act[20] = &レンジ;
+
+	act[21] = &プロフェッサー;//協会会長
+	act[22] = &ジョッシュ;
+	act[23] = &メイコ;
+
+	act[24] = &語り部;
+
+	act[25] = &スタイト;//副総督
+	act[26] = &ハルファド;//総督
+
+	act[27] = &記者;
+
+	act[28] = &棟梁;
+
+	act[29] = &兵士A;
+	act[30] = &兵士B;
+	act[31] = &兵士C;
+	act[32] = &兵士D;
+
+	act[33] = &受付;
+	act[34] = &店員;
+	act[35] = &司会;
+
+	eve_end = 0;
+	eve_line = 0;
+	eve_wait = 0;
+	eve_next = 0;
+	eve_black = 0;
+	eve_bback = 0;
+
+	for (int i = 0; i < 36; i++)
+	{
+		act[i]->no = -1;
+		act[i]->x = -1000;//画面外に置く
+		act[i]->mx = 0;
+		act[i]->my = 0;
+		act[i]->sp = 4;
+		act[i]->huki_w = 0;
+	}
+}
+
 int EVE_FUN::eve_switch(int E)
 {
 	EVE_SUB::Switch( E );
@@ -312,9 +383,8 @@ void ACTER::Set(double  X,double  Y,DI M,bool isUp)
 	y = data.window_y/2 - 162 + int(Y * 32) - 16;
 	huki_ud = 1 - isUp;
 	
-	sprintf_s(name,emp[(int)chara].name.c_str());
-
-	no = emp[(int)chara].gra;
+	sprintf_s(name,emp[no].name.c_str());
+	no = emp[no].gra;
 	
 	name_w = strlen( name )*9;
 }
@@ -335,9 +405,9 @@ void ACTER::Move(double MX,double MY,int S )
 	EVE_FUN::Sin().eve_next = 1;
 }
 void ACTER::Emo(EM em){
-	for (int i = 0; i<32; i++)
+	for (int i = 0; i<36; i++)
 	{
-		act[i].huki_w = 0;
+		act[i]->huki_w = 0;
 	}
 	emo = (int)em;
 	huki_w =0;
