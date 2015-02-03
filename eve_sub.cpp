@@ -8,7 +8,8 @@
 #define TO	  }L++;if(GetLine()==L){
 #define END   TO SetEnd();}
 
-extern ACTER* act[36];
+#define ACT_COUNT 37
+extern ACTER* act[ACT_COUNT];
 
 extern ACTER セオ;//FBS関係
 extern ACTER ルルファ;
@@ -58,46 +59,46 @@ extern ACTER 兵士C;
 extern ACTER 兵士D;
 
 extern ACTER 受付;
+extern ACTER 役人;
 extern ACTER 店員;
 extern ACTER 司会;
 
-
 extern int GetLine();
 extern void SetEnd();
-extern int BackChenge(EStage esta , int T=1);
+extern int BackChenge(EStage esta, int T = 1);
 
 void EVE_SUB::Switch(int E)
 {
-	switch(E)
+	switch (E)
 	{
 		//0~19 各モードイントロ
-		case  0:導入_シナリオ();break;
-		case  1:導入_自由経済();break;
-		case  2:導入_メダルの王();;break;
-		case  3:導入_拝金主義();;break;
-		case  4:導入_千客万来();;break;
-		case  5:導入_株を育てて();;break;
-		case  6:導入_シェアNo1();;break;
-		case  7:導入_つるはし大好き();break;
-		case  8:導入_開拓最前線();break;
-		case  9:導入_無双の斧();break;
-		case 10:導入_究極の槍();break;
-		case 11:導入_至高の剣();break;
-		case 12:導入_完璧の弓();break;
-		case 13:導入_ウェポンマイスター();break;
-		case 14:導入_アイスエイジ();break;
-		case 15:導入_閃き道場();break;
-		case 16:導入_大ハンター時代();break;
-		case 17:導入_時代の終わり();break;
-		case 18:;break;
-		case 19:;break;
-		case 20:;break;
+	case  0:導入_シナリオ(); break;
+	case  1:導入_自由経済(); break;
+	case  2:導入_メダルの王();; break;
+	case  3:導入_拝金主義();; break;
+	case  4:導入_千客万来();; break;
+	case  5:導入_株を育てて();; break;
+	case  6:導入_シェアNo1();; break;
+	case  7:導入_つるはし大好き(); break;
+	case  8:導入_開拓最前線(); break;
+	case  9:導入_無双の斧(); break;
+	case 10:導入_究極の槍(); break;
+	case 11:導入_至高の剣(); break;
+	case 12:導入_完璧の弓(); break;
+	case 13:導入_ウェポンマイスター(); break;
+	case 14:導入_アイスエイジ(); break;
+	case 15:導入_閃き道場(); break;
+	case 16:導入_大ハンター時代(); break;
+	case 17:導入_時代の終わり(); break;
+	case 18:; break;
+	case 19:; break;
+	case 20:; break;
 		/*
 		//祭りイベント
 		//case 21:武器屋祭り();break;//没
 		//case 22:武器屋祭り();break;//武器屋祭り
 		//シナリオモードイベント
-	
+
 		//1年目1月
 		case 23:開店();break;//1日
 		case 24:つるはし製造開始();break;//4日
@@ -160,116 +161,116 @@ void EVE_SUB::Switch(int E)
 		case 64:ゴランノス出店();break;//1日
 		case 65:ルルファ兄失踪();break;//28日
 		default:
-			SetEnd();
+		SetEnd();
 		break;
 		*/
-		case 21:_1_1_1(); break;
-		case 22:_1_1_2(); break;
-		case 23:_1_1_3(); break;
-		case 24:_1_1_4(); break;
-		case 25:_1_1_5(); break;
-		case 26:_1_1_6(); break;
-		case 27:_1_1_7(); break;
-		case 28:_1_1_8(); break;
-		case 29:_1_1_9(); break;
-		case 30:_1_1_10(); break;
-		case 31:_1_1_11(); break;
-		case 32:_1_2_1(); break;
-		case 33:_1_2_2(); break;
-		case 34:_1_2_3(); break;
-		case 35:_1_2_4(); break;
-		case 36:_1_2_5(); break;
-		case 37:_1_3_1(); break;
-		case 38:_1_3_2(); break;
-		case 39:_1_3_3(); break;
-		case 40:_1_3_4(); break;
-		case 41:_1_4_1(); break;
-		case 42:_1_4_2(); break;
-		case 43:_1_4_3(); break;
-		case 44:_1_4_4(); break;
-		case 45:_1_4_5(); break;
-		case 46:_1_5_1(); break;
-		case 47:_1_5_2(); break;
-		case 48:_1_5_3(); break;
-		case 49:_1_5_4(); break;
-		case 50:_1_6_1(); break;
-		case 51:_1_6_2(); break;
-		case 52:_1_6_3(); break;
-		case 53:_1_6_4(); break;
-		case 54:_1_7_1(); break;
-		case 55:_1_7_2(); break;
-		case 56:_1_7_3(); break;
-		case 57:_1_7_4(); break;
-		case 58:_1_8_1(); break;
-		case 59:_1_8_2(); break;
-		case 60:_1_8_3(); break;
-		case 61:_1_8_4(); break;
-		case 62:_1_9_1(); break;
-		case 63:_1_9_2(); break;
-		case 64:_1_9_3(); break;
-		case 65:_1_9_4(); break;
-		case 66:_1_10_1(); break;
-		case 67:_1_10_2(); break;
-		case 68:_1_10_3(); break;
-		case 69:_1_10_4(); break;
-		case 70:_1_11_1(); break;
-		case 71:_1_11_2(); break;
-		case 72:_1_11_3(); break;
-		case 73:_1_11_4(); break;
-		case 74:_1_12_1(); break;
-		case 75:_1_12_2(); break;
-		case 76:_1_12_3(); break;
-		case 77:_1_12_4(); break;
-		case 78:_1_1_1(); break;
-		case 79:_1_1_2(); break;
-		case 80:_1_1_3(); break;
-		case 81:_1_1_4(); break;
-		case 82:_1_2_1(); break;
-		case 83:_1_2_2(); break;
-		case 84:_1_2_3(); break;
-		case 85:_1_2_4(); break;
-		case 86:_1_3_1(); break;
-		case 87:_1_3_2(); break;
-		case 88:_1_3_3(); break;
-		case 89:_1_3_4(); break;
-		case 90:_1_4_1(); break;
-		case 91:_1_4_2(); break;
-		case 92:_1_4_3(); break;
-		case 93:_1_4_4(); break;
-		case 94:_1_5_1(); break;
-		case 95:_1_5_2(); break;
-		case 96:_1_5_3(); break;
-		case 97:_1_5_4(); break;
-		case 98:_1_6_1(); break;
-		case 99:_1_6_2(); break;
-		case 100:_1_6_3(); break;
-		case 101:_1_6_4(); break;
-		case 102:_1_7_1(); break;
-		case 103:_1_7_2(); break;
-		case 104:_1_7_3(); break;
-		case 105:_1_7_4(); break;
-		case 106:_1_8_1(); break;
-		case 107:_1_8_2(); break;
-		case 108:_1_8_3(); break;
-		case 109:_1_8_4(); break;
-		case 110:_1_9_1(); break;
-		case 111:_1_9_2(); break;
-		case 112:_1_9_3(); break;
-		case 113:_1_9_4(); break;
-		case 114:_1_10_1(); break;
-		case 115:_1_10_2(); break;
-		case 116:_1_10_3(); break;
-		case 117:_1_10_4(); break;
-		case 118:_1_11_1(); break;
-		case 119:_1_11_2(); break;
-		case 120:_1_11_3(); break;
-		case 121:_1_11_4(); break;
-		case 122:_1_12_1(); break;
-		case 123:_1_12_2(); break;
-		case 124:_1_12_3(); break;
-		case 125:_1_12_4(); break;
-		default:
-			SetEnd();
+	case 21:_1_1_1(); break;
+	case 22:_1_1_2(); break;
+	case 23:_1_1_3(); break;
+	case 24:_1_1_4(); break;
+	case 25:_1_1_5(); break;
+	case 26:_1_1_6(); break;
+	case 27:_1_1_7(); break;
+	case 28:_1_1_8(); break;
+	case 29:_1_1_9(); break;
+	case 30:_1_1_10(); break;
+	case 31:_1_1_11(); break;
+	case 32:_1_2_1(); break;
+	case 33:_1_2_2(); break;
+	case 34:_1_2_3(); break;
+	case 35:_1_2_4(); break;
+	case 36:_1_2_5(); break;
+	case 37:_1_3_1(); break;
+	case 38:_1_3_2(); break;
+	case 39:_1_3_3(); break;
+	case 40:_1_3_4(); break;
+	case 41:_1_4_1(); break;
+	case 42:_1_4_2(); break;
+	case 43:_1_4_3(); break;
+	case 44:_1_4_4(); break;
+	case 45:_1_4_5(); break;
+	case 46:_1_5_1(); break;
+	case 47:_1_5_2(); break;
+	case 48:_1_5_3(); break;
+	case 49:_1_5_4(); break;
+	case 50:_1_6_1(); break;
+	case 51:_1_6_2(); break;
+	case 52:_1_6_3(); break;
+	case 53:_1_6_4(); break;
+	case 54:_1_7_1(); break;
+	case 55:_1_7_2(); break;
+	case 56:_1_7_3(); break;
+	case 57:_1_7_4(); break;
+	case 58:_1_8_1(); break;
+	case 59:_1_8_2(); break;
+	case 60:_1_8_3(); break;
+	case 61:_1_8_4(); break;
+	case 62:_1_9_1(); break;
+	case 63:_1_9_2(); break;
+	case 64:_1_9_3(); break;
+	case 65:_1_9_4(); break;
+	case 66:_1_10_1(); break;
+	case 67:_1_10_2(); break;
+	case 68:_1_10_3(); break;
+	case 69:_1_10_4(); break;
+	case 70:_1_11_1(); break;
+	case 71:_1_11_2(); break;
+	case 72:_1_11_3(); break;
+	case 73:_1_11_4(); break;
+	case 74:_1_12_1(); break;
+	case 75:_1_12_2(); break;
+	case 76:_1_12_3(); break;
+	case 77:_1_12_4(); break;
+	case 78:_1_1_1(); break;
+	case 79:_1_1_2(); break;
+	case 80:_1_1_3(); break;
+	case 81:_1_1_4(); break;
+	case 82:_1_2_1(); break;
+	case 83:_1_2_2(); break;
+	case 84:_1_2_3(); break;
+	case 85:_1_2_4(); break;
+	case 86:_1_3_1(); break;
+	case 87:_1_3_2(); break;
+	case 88:_1_3_3(); break;
+	case 89:_1_3_4(); break;
+	case 90:_1_4_1(); break;
+	case 91:_1_4_2(); break;
+	case 92:_1_4_3(); break;
+	case 93:_1_4_4(); break;
+	case 94:_1_5_1(); break;
+	case 95:_1_5_2(); break;
+	case 96:_1_5_3(); break;
+	case 97:_1_5_4(); break;
+	case 98:_1_6_1(); break;
+	case 99:_1_6_2(); break;
+	case 100:_1_6_3(); break;
+	case 101:_1_6_4(); break;
+	case 102:_1_7_1(); break;
+	case 103:_1_7_2(); break;
+	case 104:_1_7_3(); break;
+	case 105:_1_7_4(); break;
+	case 106:_1_8_1(); break;
+	case 107:_1_8_2(); break;
+	case 108:_1_8_3(); break;
+	case 109:_1_8_4(); break;
+	case 110:_1_9_1(); break;
+	case 111:_1_9_2(); break;
+	case 112:_1_9_3(); break;
+	case 113:_1_9_4(); break;
+	case 114:_1_10_1(); break;
+	case 115:_1_10_2(); break;
+	case 116:_1_10_3(); break;
+	case 117:_1_10_4(); break;
+	case 118:_1_11_1(); break;
+	case 119:_1_11_2(); break;
+	case 120:_1_11_3(); break;
+	case 121:_1_11_4(); break;
+	case 122:_1_12_1(); break;
+	case 123:_1_12_2(); break;
+	case 124:_1_12_3(); break;
+	case 125:_1_12_4(); break;
+	default:
+		SetEnd();
 		break;
 	}
 }
@@ -278,13 +279,13 @@ void EVE_SUB::導入_シナリオ()
 {
 	START
 		語り部.Set(6, 10, DI::左);
-		BackChenge(EStage::酒場);
-		語り部.Move(0,-6,2);
+	BackChenge(EStage::酒場);
+	語り部.Move(0, -6, 2);
 	TO
 		語り部.Move(0.5, 0, 2);
 	TO
 		語り部.Mes("Hello world!");
-		語り部.Direct(DI::下);
+	語り部.Direct(DI::下);
 	TO
 		語り部.Emo(EM::思考);
 	TO
@@ -345,16 +346,16 @@ void EVE_SUB::導入_自由経済()
 {
 	START
 		語り部.Set(6, 10, DI::左);
-		語り部.Move(0, -6, 2);
-		BackChenge(EStage::酒場);
+	語り部.Move(0, -6, 2);
+	BackChenge(EStage::酒場);
 	END
 }
 void EVE_SUB::導入_メダルの王()
 {
 	START
 		語り部.Set(6, 10, DI::左);
-		語り部.Move(0, -6, 2);
-		BackChenge(EStage::酒場);
+	語り部.Move(0, -6, 2);
+	BackChenge(EStage::酒場);
 	END
 }
 void EVE_SUB::導入_拝金主義()
@@ -497,14 +498,14 @@ void EVE_SUB::_1_1_2()
 	//ちょっとした掛け合い後、ゲーム開始
 	START
 		セオ.Set(-1, 8, DI::左, false);
-		ファクト.Set(7, 7, DI::下, true);
-		棟梁.Set( 8, 7, DI::下, true);
-		BackChenge(EStage::店外);
+	ファクト.Set(7, 7, DI::下, true);
+	棟梁.Set(8, 7, DI::下, true);
+	BackChenge(EStage::店外);
 	TO
 		セオ.Move(9, 0, 3);
 	TO
 		棟梁.Mes("おはよう、社長さん");
-		セオ.Direct(DI::上);
+	セオ.Direct(DI::上);
 	TO
 		セオ.Mes("ほぅ");
 	TO
@@ -525,7 +526,7 @@ void EVE_SUB::_1_1_2()
 		セオ.Mes("何も言ってないんだが・・・");
 	TO
 		ファクト.Mes("");
-		セオ.Emo(EM::思考);
+	セオ.Emo(EM::思考);
 	TO
 		セオ.Mes("まぁ、確かにショボイかもしれんが＠これから稼いで建て替えりゃいい");
 	TO
@@ -536,7 +537,7 @@ void EVE_SUB::_1_1_2()
 		棟梁.Mes("今度は現金払いで頼むよ");
 	TO
 		セオ.Emo(EM::音符);
-		ファクト.Emo(EM::呆れ);
+	ファクト.Emo(EM::呆れ);
 	END
 }
 
@@ -547,8 +548,8 @@ void EVE_SUB::_1_1_3()
 {
 	START
 		セオ.Set(2, 2, DI::下);
-		ファクト.Set(7, 4, DI::下, false);
-		BackChenge(EStage::店内);
+	ファクト.Set(7, 4, DI::下, false);
+	BackChenge(EStage::店内);
 	TO
 		セオ.Move(0, 2, 4);
 	TO
@@ -557,27 +558,27 @@ void EVE_SUB::_1_1_3()
 		セオ.Mes("戻ったぞ、店番ご苦労");
 	TO
 		セオ.Mes("");
-		ファクト.E眠り();
+	ファクト.E眠り();
 	TO
 		ファクト.E思考();
 	TO
 		ファクト.Mes("ふぁ～あ・・・");
 	TO
 		ファクト.Direct(DI::左);
-		ファクト.Mes("おかえり");
+	ファクト.Mes("おかえり");
 	TO
 		ファクト.Mes("ところで何の用事だったの？");
 	TO
 		セオ.Mes("役所に営業許可を申請してきた");
 	TO
-		セオ.Mes("武器を売るとなると、審査やら登録やらがあるからな");
+		セオ.Mes("武器を売るとなると、審査やらなんやらがあるからな");
 	TO
 		ファクト.Mes("と言う事はまだ営業してなかったのか");
 	TO
 		ファクト.Mes("店番する必要あったの？");
 	TO
 		セオ.E思考();
-		ファクト.E思考();
+	ファクト.E思考();
 	TO
 		セオ.Mes("それはそれとして＠明後日、担当者が視察に来るそうだ");
 	TO
@@ -598,12 +599,12 @@ void EVE_SUB::_1_1_3()
 		ファクト.Mes("そもそもその噂って本当なの？");
 	TO
 		ファクト.Mes("");
-		セオ.E音符();
+	セオ.E音符();
 	TO
-		セオ.Mes("勿論本当だ、直ぐに繁盛するぞ！");
+		セオ.Mes("勿論だとも、直ぐに繁盛するぞ！");
 	TO
 		ファクト.Direct(DI::下);
-		ファクト.Mes("まぁ、今更言っても仕方無いか・・・");
+	ファクト.Mes("・・・");
 	TO
 		セオ.Mes("じゃあ、つるはし製造まかせたぞ");
 	END
@@ -618,15 +619,15 @@ void EVE_SUB::_1_1_4()
 	//お菓子を渡す事に
 	START
 		セオ.Set(8, 6, DI::下);
-		ハルファド.Set( 7.5, 11, DI::下,false);
-		兵士A.Set( 6.5, 12, DI::下);
-		兵士B.Set( 8.5, 12, DI::下);
-		ファクト.Set( 7, 6, DI::下);
-		BackChenge(EStage::店内);
+	ハルファド.Set(7.5, 11, DI::下, false);
+	兵士A.Set(6.5, 12, DI::下);
+	兵士B.Set(8.5, 12, DI::下);
+	ファクト.Set(7, 6, DI::下);
+	BackChenge(EStage::店内);
 	TO
 		ハルファド.Move(0, -4, 2);
-		兵士A.Move(0, -4, 2);
-		兵士B.Move(0, -4, 2);
+	兵士A.Move(0, -4, 2);
+	兵士B.Move(0, -4, 2);
 	TO
 		ハルファド.Mes("おはよう");
 	TO
@@ -634,37 +635,39 @@ void EVE_SUB::_1_1_4()
 	TO
 		ハルファド.Mes("総督のハルファドだ、よろしく。");
 	TO
+		ファクト.Emo(EM::驚き);
+	TO
 		ハルファド.Left();
-		ハルファド.Mes("君が武器屋を始めたいって人？");
-		セオ.Mes("");
-		ファクト.Mes("");
+	ハルファド.Mes("君が武器屋を始めたいって人？");
+	セオ.Mes("");
+	ファクト.Mes("");
 	TO
 		セオ.Mes("私が社長のセオです！");
 	TO
 		ハルファド.Up();
-		ハルファド.E思考();
+	ハルファド.E思考();
 	TO
 		セオ.Mes("どうかしましたか？");
 	TO
-		ハルファド.Mes("へぇ君が・・・？");
+		ハルファド.Mes("ほぉ、君が？");
 	TO
 		ハルファド.Mes("まぁいいか＠早速審査を始めようかね、工房はどこかね？");
 	TO
 		セオ.Mes("こちらです");
 	TO
 		セオ.Move(-1, 0, 4);
-		ファクト.Move(-1, 0, 4);
+	ファクト.Move(-1, 0, 4);
 	TO
 		セオ.Move(-1, 0, 4);
-		ハルファド.Move(-1, 0, 4);
-		ファクト.Move(-1, 0, 4);
+	ハルファド.Move(-1, 0, 4);
+	ファクト.Move(-1, 0, 4);
 	TO
-		セオ.Set( 8, 6, DI::下);
-		ハルファド.Set( 7.5, 7, DI::上,false);
-		兵士A.Set( 6.5, 8, DI::上);
-		兵士B.Set( 8.5, 8, DI::上);
-		ファクト.Set( 7, 6, DI::下);
-		BackChenge(EStage::店内);
+		セオ.Set(8, 6, DI::下);
+	ハルファド.Set(7.5, 7, DI::上, false);
+	兵士A.Set(6.5, 8, DI::上);
+	兵士B.Set(8.5, 8, DI::上);
+	ファクト.Set(7, 6, DI::下);
+	BackChenge(EStage::店内);
 	TO
 		ハルファド.Mes("これで視察は終わりかな");
 	TO
@@ -675,7 +678,7 @@ void EVE_SUB::_1_1_4()
 		ハルファド.Mes("しかし、武器屋の認可は慎重にする必要があるからして");
 	TO
 		ハルファド.Right();
-		ハルファド.Mes("あーっ・・・");
+	ハルファド.Mes("あーっ・・・");
 	TO
 		ハルファド.Mes("なんだか、お菓子でも食べたくなってきたなぁ・・・");
 	TO
@@ -684,7 +687,7 @@ void EVE_SUB::_1_1_4()
 		ハルファド.Mes("いや～、こう見えて甘い物には目が無くてねぇ・・・？");
 	TO
 		セオ.E思考();
-		ハルファド.E思考();
+	ハルファド.E思考();
 	TO
 		セオ.Mes("少々お待ちを");
 	TO
@@ -693,10 +696,10 @@ void EVE_SUB::_1_1_4()
 		セオ.Move(-10, 0, 4);
 	TO
 		セオ.Down();
-		セオ.Mes("心ばかりですが、よかったらこれを");
+	セオ.Mes("心ばかりですが、よかったらこれを");
 	TO
 		ハルファド.Up();
-		ハルファド.Mes("ん、これは何かな？");
+	ハルファド.Mes("ん、これは何かな？");
 	TO
 		セオ.Mes("お茶菓子です、よかったら皆さんで");
 	TO
@@ -713,13 +716,13 @@ void EVE_SUB::_1_1_4()
 		セオ.Mes("ありがとうございます！");
 	TO
 		ハルファド.Direct(DI::下);;
-		ハルファド.Mes("よし、今日は帰るぞ");
+	ハルファド.Mes("よし、今日は帰るぞ");
 	TO
 		ハルファド.Move(0, 2, 2);
 	TO
 		ハルファド.Move(0, 5, 2);
-		兵士A.Move(0, 5, 2);
-		兵士B.Move(0, 5, 2);
+	兵士A.Move(0, 5, 2);
+	兵士B.Move(0, 5, 2);
 	END
 }
 
@@ -733,39 +736,39 @@ void EVE_SUB::_1_1_5()
 
 	START
 		セオ.Set(7, 3, DI::左);
-		ハルファド.Set( 7, 11, DI::左);
-		兵士A.Set( 6, 12, DI::左);
-		兵士B.Set( 8, 12, DI::左);
-		BackChenge(EStage::店内);
+	ハルファド.Set(7, 11, DI::左);
+	兵士A.Set(6, 12, DI::左);
+	兵士B.Set(8, 12, DI::左);
+	BackChenge(EStage::店内);
 	TO
 		ハルファド.Move(0, -5, 2);
-		兵士A.Move(0, -5, 2);
-		兵士B.Move(0, -5, 2);
+	兵士A.Move(0, -5, 2);
+	兵士B.Move(0, -5, 2);
 	TO
 		ハルファド.Mes("おい！");
-		ハルファド.HukiUp(false);
+	ハルファド.HukiUp(false);
 	TO
 		セオ.Down();
-		セオ.Move(0, 1, 2);
+	セオ.Move(0, 1, 2);
 	TO
 		セオ.Mes("いらっしゃいませ♪＠お客様本日はどのような武器をお探しで？");
 	TO
 		セオ.Mes("ああ！ハルファド様＠お陰様で本日より営業を開始しております");
 	TO
-		兵士C.Set( 2, 2, DI::下);
-		兵士C.Move(0, 1, 2);
+		兵士C.Set(2, 2, DI::下);
+	兵士C.Move(0, 1, 2);
 	TO
-		兵士D.Set( 2, 2, DI::下);
-		兵士D.Move(0, 1, 2);
-		兵士C.Move(0, 1, 2);
+		兵士D.Set(2, 2, DI::下);
+	兵士D.Move(0, 1, 2);
+	兵士C.Move(0, 1, 2);
 	TO
 		兵士C.Right();
-		兵士D.Right();
+	兵士D.Right();
 	TO
 		セオ.Left();
 	TO
 		セオ.Down();
-		セオ.Mes("なんですか、一体？");
+	セオ.Mes("なんですか、一体？");
 	TO
 		ハルファド.Mes("貴様に逮捕状が出ている");
 	TO
@@ -778,90 +781,91 @@ void EVE_SUB::_1_1_5()
 		ハルファド.Mes("さっさとこいつを連行しろ！");
 	TO
 		セオ.Left();
-		セオ.Mes("っ・・・");
+	セオ.Mes("っ・・・");
 	TO
 		セオ.Down();
-		スタイト.Set( 7, 11, DI::上);
-		スタイト.Move(0, -3, 2);
-		スタイト.Mes("なんだ、騒がしいな");
-		スタイト.huki_ud = 1;
+	スタイト.Set(7, 11, DI::上);
+	スタイト.Move(0, -3, 2);
+	スタイト.Mes("総督殿！");
+	スタイト.huki_ud = 1;
 	TO
 		ハルファド.Down();
-		ハルファド.Mes("領事！");
-		ハルファド.huki_ud = 0;
-		兵士A.Down();
-		兵士B.Down();
+	ハルファド.Mes("スタイト！＠貴様、何の用だ？");
+	ハルファド.huki_ud = 0;
+	兵士A.Down();
+	兵士B.Down();
 	TO
-		セオ.Mes("領事？");
-		セオ.huki_ud = 0;
+		セオ.Mes("？");
+	セオ.huki_ud = 0;
 	TO
-		スタイト.Mes("兵士を引き連れてどこかに行ったと思ったら＠何をしているんだ？");
+		スタイト.Mes("そちらこそ、何をなさっているんですか？");
+	TO
+		スタイト.Mes("総督が兵を連れて出立なさったと聞き、どうも気になりまして");
 	TO
 		セオ.huki_w = 0;
-		ハルファド.Mes("無許可で武器を売っている犯罪者を逮捕しに来たんですよ。");
+	ハルファド.Mes("ふん、無許可で武器を売っている犯罪者を逮捕しに来たのだ");
 	TO
 		スタイト.Mes("そうなの？");
 	TO
 		ハルファド.huki_w = 0;
-		セオ.Mes("昨日、この方に大丈夫と言われたんですが・・・");
+	セオ.Mes("昨日、この方に大丈夫と言われたんですが・・・");
 	TO
 		ハルファド.Up();
 	ハルファド.Mes("貴様！嘘を付くな");
-		セオ.huki_w = 0;
-		ハルファド.huki_w = 0;
+	セオ.huki_w = 0;
+	ハルファド.huki_w = 0;
 	TO
 		ハルファド.Down();
-		スタイト.Mes("思い出した＠そういえば俺が申請を受理したんだ！");
-		スタイト.huki_ud = 1;
+	スタイト.Mes("おかしいですね・・・＠許可証はここにあるのですが");
+	スタイト.huki_ud = 1;
 	TO
-		スタイト.Mes("そうだろ？");
-		スタイト.huki_ud = 1;
+		ハルファド.Mes("何故貴様がそれを！");
 	TO
-		セオ.Mes("そうだったんですか？");
+		スタイト.Mes("すみません総督、事務手続きに問題でもあったのでしょう");
 	TO
-		スタイト.Mes("これで問題ないだろ？");
+		スタイト.Mes("これで問題ないでしょう？");
 	TO
 		セオ.huki_w = 0;
-		ハルファド.Mes("問題無いわけ無いでしょう！");
+	ハルファド.Mes("問題無いわけ無いだろう！");
 	TO
 		スタイト.Mes("・・・");
 	TO
 		ハルファド.Up();
-		ハルファド.Mes("ちっ、仕方無い＠覚えていろよ");
+	ハルファド.Mes("ちっ、仕方無い＠覚えていろよ");
 	TO
 		セオ.Down();
-		ハルファド.Mes("行くぞ");
+	ハルファド.Mes("行くぞ");
 	TO
 		ハルファド.Move(1, 0, 2);
-		兵士A.Move(0, 1, 2);
-		兵士B.Move(0, 1, 2);
-		兵士C.Move(0, -1, 2);
-		兵士D.Move(0, -1, 2);
+	兵士A.Move(0, 1, 2);
+	兵士B.Move(0, 1, 2);
+	兵士C.Move(0, -1, 2);
+	兵士D.Move(0, -1, 2);
 	TO
 		ハルファド.Move(0, 1, 2);
-		兵士A.Move(0, 1, 2);
-		兵士B.Move(0, 1, 2);
-		兵士C.Move(0, -1, 2);
-		兵士D.y = -1000;
+	兵士A.Move(0, 1, 2);
+	兵士B.Move(0, 1, 2);
+	兵士C.Move(0, -1, 2);
+	兵士D.y = -1000;
 	TO
 		ハルファド.Move(0, 5, 2);
-		兵士A.Move(0, 5, 2);
-		兵士B.Move(0, 5, 2);
-		兵士C.y = -1000;
+	兵士A.Move(0, 5, 2);
+	兵士B.Move(0, 5, 2);
+	兵士C.y = -1000;
 	TO
 		スタイト.Move(0, -2, 2);
-		スタイト.Mes("災難だったな");
-		スタイト.huki_ud = 1;
+	スタイト.Mes("災難だったな");
+	スタイト.huki_ud = 1;
 	TO
 		スタイト.Down();
-		スタイト.Mes("どうやら、あんたのクッキーが気に入らんかったらしい");
+	スタイト.Mes("どうやら、あんたのクッキーが気に入らんかったらしい");
 	TO
 		スタイト.Mes("しかし、賄賂に菓子を渡す奴がいるとは＠普通は札束を詰めるもんなんだが");
 	TO
 		セオ.E思考();
 	TO
 		スタイト.Up();
-		スタイト.Mes("わざとか？");
+	スタイト.Mes("わざとか？");
 	TO
 		スタイト.E音符();
 	TO
@@ -870,25 +874,33 @@ void EVE_SUB::_1_1_5()
 		セオ.Mes("ありがとうございます、助かりました");
 	TO
 		スタイト.Up();
-		スタイト.Mes("はっは、例には及ばんよ＠監督責任って奴もあるからな");
+	スタイト.Mes("はっは、例には及ばんよ＠これも仕事の内さ");
 	TO
-		スタイト.Mes("今日は営業許可証を渡しに来た＠ほい、これが営業許可証");
+		セオ.Mes("ええっと");
+	TO
+		スタイト.Mes("ああ、自己紹介がまだだったね");
+	TO
+		スタイト.Mes("俺は副総督のスタイトだ、よろしく");
+	TO
+		スタイト.Mes("今日は営業許可証を渡しにね");
 	TO
 		スタイト.Mes("と言いたい所だが、書類に不備があってな＠許可を出すことは出来ない");
 	TO
 		スタイト.Left();
-		スタイト.Mes("あ～、なんだか急に菓子でも食べなくなってきた・・・");
+	スタイト.Mes("あ～、なんだか急に菓子でも食べなくなってきた・・・");
 	TO
 		セオ.Mes("・・・");
 	TO
 		スタイト.Up();
-		スタイト.Mes("冗談だよ、冗談");
+	スタイト.Mes("冗談だよ、冗談");
 	TO
-		スタイト.Mes("はいコレが営業許可証だ");
+		スタイト.Mes("はいコレが営業許可証");
 	TO
 		セオ.Mes("ありがとうございます");
 	TO
-		スタイト.Mes("しかし、このタイミングで武器屋を始めるとは・・・＠");
+		スタイト.Mes("ところで、なんで武器屋なんて始めようと思ったんだい？");
+	TO
+		スタイト.Mes("フロンティアの現状を知らんわけじゃあるまい");
 	TO
 		スタイト.E思考();
 	TO
@@ -897,8 +909,6 @@ void EVE_SUB::_1_1_5()
 		スタイト.Mes("じゃあな");
 	TO
 		スタイト.Move(0, 6, 2);
-	TO
-		セオ.Mes("助かった");
 	END
 }
 
@@ -910,10 +920,10 @@ void EVE_SUB::_1_1_5()
 void EVE_SUB::_1_1_6()
 {
 	START
-		セオ.Set( 7, 4, DI::下);
-		ジョッシュ.Set( 6.5, 11, DI::左,false);
-		メイ.Set( 7.5, 11, DI::左,false);
-		BackChenge(EStage::店内);
+		セオ.Set(7, 4, DI::下);
+	ジョッシュ.Set(6.5, 11, DI::左, false);
+	メイ.Set(7.5, 11, DI::左, false);
+	BackChenge(EStage::店内);
 	TO
 		セオ.Mes("営業開始したは良いが、あまり客が来ないな・・・");
 	TO
@@ -942,11 +952,11 @@ void EVE_SUB::_1_1_6()
 	TO
 		ジョッシュ.E思考();
 	TO
-		ジョッシュ.Mes("良さそうですね");
+		ジョッシュ.Mes("ほぅ、なかなか良さそうですね");
 	TO
-		メイ.Mes("なんかダサくない？＠まぁ博士が作った武器よりはましか");
+		メイ.Mes("なんかダサくない？＠まぁ教授が作った武器よりはましか");
 	TO
-		セオ.Mes("博士？");
+		セオ.Mes("教授？");
 	TO
 		ジョッシュ.Mes("我々の雇い主です＠ここらの生態系を調査しているんですよ");
 	TO
@@ -967,25 +977,25 @@ void EVE_SUB::_1_1_6()
 void EVE_SUB::_1_1_7()
 {
 	START
-		セオ.Set( 7, 4, DI::下);
-	ファクト.Set( -1, 4, DI::左);
-	シロ.Set( 7, 11, DI::左,false);
+		セオ.Set(7, 4, DI::下);
+	ファクト.Set(-1, 4, DI::左);
+	シロ.Set(7, 11, DI::左, false);
 	BackChenge(EStage::店内);
 	TO
 		ファクト.Move(7, 0, 4);
 	TO
-		ファクト.Mes("僕が作った武器の評判はどうだい？");
+		ファクト.Mes("武器の評判はどうだい？");
 	TO
 		セオ.Left();
 	セオ.Mes("まずまずって所だな");
 	TO
 		ファクト.Mes("君がそういうって事は、評判良いんだね");
 	TO
-		セオ.Mes("今は他の武器屋は無いし、余程ひどくない限り売れるしな");
+		セオ.Mes("今は他に武器屋が無いから、余程ひどくない限り売れるしな");
 	TO
-		セオ.Mes("思ったよりか武器の需要はあるし＠当面の経営も問題なさそうだ");
+		セオ.Mes("思ったよりか武器の需要はあるし＠なんとか赤字は避けれれそうかな");
 	TO
-		ファクト.Mes("なら安心だね");
+		ファクト.Mes("そうか");
 	TO
 		ファクト.E音符();
 	TO
@@ -1019,13 +1029,13 @@ void EVE_SUB::_1_1_7()
 	TO
 		セオ.Mes("それで本日はどのような武器をお探しですか");
 	TO
-		シロ.Mes("剣が欲しいんだ、最高のね");
+		シロ.Mes("剣が欲しいんだ、最高の");
 	TO
 		セオ.Mes("それでしたら、こちらはいかがでしょうか？");
 	TO
 		シロ.E思考();
 	TO
-		シロ.Mes("これは駄目だ＠もっと切れ味があるのが欲しい");
+		シロ.Mes("これでは駄目だ＠もっと切れ味があるのは無いのか？");
 	TO
 		セオ.Mes("すいません、当店で扱っている剣はそれだけでして");
 	TO
@@ -1036,9 +1046,11 @@ void EVE_SUB::_1_1_7()
 		セオ.E驚き();
 	ファクト.E驚き();
 	TO
-		セオ.Mes("ドラゴン！実在するんですか！？");
+		セオ.Mes("ドラゴン！？実在するんですか？");
 	TO
-		シロ.Mes("誰も信用してくれなかったけどね＠君は信じるかい？");
+		シロ.Mes("ああ、お伽話に出てくるようなのとは少し違うがね");
+	TO
+		セオ.Mes("ほぅ");
 	TO
 		セオ.E思考();
 	TO
@@ -1071,38 +1083,38 @@ void EVE_SUB::_1_1_7()
 /*追加で職人を雇う事に。*/
 void EVE_SUB::_1_1_8()
 {
-START
-	セオ.Set(7,4,DI::左);
-	ファクト.Set(6,4,DI::右);
+	START
+		セオ.Set(7, 4, DI::左);
+	ファクト.Set(6, 4, DI::右);
 	BackChenge(EStage::店内);
 	TO
-	セオ.Mes("客が増えてきたが、仕事の方はどうだ？");
+		セオ.Mes("客が増えてきたが、仕事の方はどうだ？");
 	TO
-	ファクト.Mes("お客さんが増えてきたのはいいけど＠つるはしまで僕一人で作るのは・・・");
+		ファクト.Mes("お客さんが増えてきたのはいいけど＠つるはしまで僕一人で作るのは・・・");
 	TO
-	ファクト.Mes("だから人を雇って欲しい＠それに時間が欲しい・・・");
+		ファクト.Mes("だから人を雇って欲しい＠それに時間が欲しい・・・");
 	TO
-	セオ.Mes("竜殺しの剣か？＠大体、時間があったとしてお前に作れるのか");
+		セオ.Mes("竜殺しの剣か？＠大体、時間があったとしてお前に作れるのか");
 	TO
-	ファクト.Mes("それにあの人ドラゴンがいるって言ってたじゃないか＠本当ならお客さんは増えるんだろ");
+		ファクト.Mes("それにあの人ドラゴンがいるって言ってたじゃないか＠本当ならお客さんは増えるんだろ");
 	TO
-	セオ.Mes("ドラゴンがいるって話、信じたのか？");
+		セオ.Mes("ドラゴンがいるって話、信じたのか？");
 	TO
-	ファクト.Mes("僕は信じる");
+		ファクト.Mes("僕は信じる");
 	TO
-	セオ.E思考();
+		セオ.E思考();
 	TO
-	セオ.Mes("まぁ、俺も信じているわけだが");
+		セオ.Mes("まぁ、俺も信じているわけだが");
 	TO
-	セオ.Mes("接客の方は俺一人でも回せる＠とりあえず張り紙でもして、職人を募集するか");
+		セオ.Mes("接客の方は俺一人でも回せる＠とりあえず張り紙でもして、職人を募集するか");
 	TO
-	ファクト.Mes("良い人が来てくれるといいね");
+		ファクト.Mes("良い人が来てくれるといいね");
 	TO
-	セオ.Mes("そうだな");
+		セオ.Mes("そうだな");
 	TO
-	ファクト.Move(-7,0,4);
+		ファクト.Move(-7, 0, 4);
 	TO
-	セオ.E思考();
+		セオ.E思考();
 	END
 }
 
@@ -1112,9 +1124,9 @@ START
 void EVE_SUB::_1_1_9()
 {
 	START
-		セオ.Set( 7, 4, DI::下);
+		セオ.Set(7, 4, DI::下);
 	ファクト.Set(-1, 4, DI::左);
-	トウツグ.Set( 7, 11, DI::左,false);
+	トウツグ.Set(7, 11, DI::左, false);
 	BackChenge(EStage::店内);
 	TO
 		トウツグ.Move(0, -5, 4);
@@ -1197,9 +1209,9 @@ void EVE_SUB::_1_1_9()
 void EVE_SUB::_1_1_10()
 {
 	START
-		セオ.Set( 7, 4, DI::下);
-	ルルファ.Set( 7, 11, DI::左,false);
-	ファクト.Set( -1, 4, DI::左);
+		セオ.Set(7, 4, DI::下);
+	ルルファ.Set(7, 11, DI::左, false);
+	ファクト.Set(-1, 4, DI::左);
 	BackChenge(EStage::店内);
 	TO
 		ルルファ.Move(0, -5, 4);
@@ -1296,9 +1308,9 @@ void EVE_SUB::_1_1_10()
 void EVE_SUB::_1_1_11()
 {
 	START
-		セオ.Set( 15, 7, DI::左);
-		受付.Set( 2, 7, DI::右);
-		BackChenge(EStage::役所);
+		セオ.Set(15, 7, DI::左);
+	受付.Set(2, 7, DI::右);
+	BackChenge(EStage::役所);
 	TO
 		セオ.Move(-10, 0, 4);
 	TO
@@ -1311,77 +1323,77 @@ void EVE_SUB::_1_1_11()
 		受付.Move(-3, 0, 4);
 	TO
 		//act[2].Move(3, 0, 4);
-	TO
+		TO
 		//act[2].Mes("お待たせしました");
-	TO
+		TO
 		セオ.Mes("いえいえ＠先日納品した、つるはしはどうですか？");
 	TO
 		//act[2].Mes("なかなか良いつるはしでした＠出来たら来月も頼みたいんですが・・・");
-	TO
+		TO
 		セオ.E疑問();
 	TO
 		//act[2].Mes("上の方から、実績の無い業者のは使うなといわれまして");
-	TO
+		TO
 		//act[2].Mes("すいません、とりあえず今月の受注は０と言う事で・・・");
-	TO
+		TO
 		セオ.E思考();
 	TO
 		セオ.Mes("それは困ります");
 	TO
 		//act[2].Mes("そう言われましても・・・");
-	TO
+		TO
 		セオ.E思考();
 	TO
 		セオ.Mes("分かりました・・・");
 	TO
 		//act[2].Mes("本当にごめんなさい、私の力不足で");
-	TO
+		TO
 		セオ.Mes("それと税金の件で相談したいのですが");
 	TO
 		//act[2].Mes("分かりました、担当の物をお呼びします");
-	TO
+		TO
 		//act[2].Move(-3, 0, 4);
-	TO
+		TO
 		//act[3].Move(3, 0, 4);
-	TO
+		TO
 		//act[3].Mes("はじめましてぇ、税務課のタクスです");
-	TO
+		TO
 		セオ.Mes("はじめまして、フロンティアスミスのセオです");
 	TO
 		//act[3].Mes("社長さんも大変ですねぇ＠うちの副領事みたいのに絡まれて");
-	TO
+		TO
 		//act[3].Mes("さっさとくたばればいいのにね、あんな奴");
-	TO
+		TO
 		セオ.E呆れ();
-		//act[3].Eハート();
+	//act[3].Eハート();
 	TO
 		//act[3].Mes("冗談ですよぉ");
-	TO
+		TO
 		//act[3].Mes("税金の相談でしたっけ？");
-	TO
+		TO
 		セオ.Mes("はい、ちょっと分からないところがありまして");
 	TO
 		セオ.Mes("");
-		BackChenge(EStage::役所);
+	BackChenge(EStage::役所);
 	TO
 		セオ.Mes("しかし税率が高すぎると思うんですが？");
 	TO
 		//act[3].Mes("武器税が結構高いですから仕方ないですね");
-	TO
+		TO
 		セオ.Mes("まけて貰えませんか？");
 	TO
 		//act[3].E思考();
-	TO
+		TO
 		//act[3].Mes("それもいいですねぇ＠分前次第ですけど");
-	TO
+		TO
 		//act[3].Mes("バレたら鉱山で強制労働ですけど＠バレなきゃいいわけで");
-	TO
+		TO
 		セオ.E思考();
 	TO
 		セオ.Mes("やっぱりいいです");
 	TO
 		//act[3].Mes("残念ですねぇ");
-	END
+		END
 }
 
 /*1.2*/
@@ -1390,10 +1402,10 @@ void EVE_SUB::_1_1_11()
 void EVE_SUB::_1_2_1()
 {
 	START
-		セオ.Set( 7.5, 6, DI::下);
-	ファクト.Set( 6.5, 8, DI::上, false);
-	トウツグ.Set( 7.5, 8, DI::上, false);
-	ルルファ.Set( 8.5, 8, DI::上, false);
+		セオ.Set(7.5, 6, DI::下);
+	ファクト.Set(6.5, 8, DI::上, false);
+	トウツグ.Set(7.5, 8, DI::上, false);
+	ルルファ.Set(8.5, 8, DI::上, false);
 	BackChenge(EStage::店内);
 	TO
 		セオ.Mes("おはようございます");
@@ -1422,11 +1434,10 @@ void EVE_SUB::_1_2_1()
 /*社員が増えてきそうだし、社内制度を見直す動きをする*/
 void EVE_SUB::_1_2_2()
 {
-
 	START
-		セオ.Set( 6, 4, DI::下);
-		ファクト.Set( 6, 8, DI::上);
-		BackChenge(EStage::会議室);
+		セオ.Set(6, 4, DI::下);
+	ファクト.Set(6, 8, DI::上);
+	BackChenge(EStage::会議室);
 	TO
 		セオ.Mes("新入りはどうだ？");
 	TO
@@ -1481,17 +1492,17 @@ void EVE_SUB::_1_2_3()
 void EVE_SUB::_1_2_4()
 {
 	START
-		セオ.Set( 7, 4, DI::下);
-		ルルファ.Set( 10, 7, DI::右);
-		スタイト.Set( 7, 11, DI::左, false);
-		兵士A.Set( 7, 6, DI::上);
-		兵士B.Set( 11, 7, DI::左);
-		BackChenge(EStage::店内);
+		セオ.Set(7, 4, DI::下);
+	ルルファ.Set(10, 7, DI::右);
+	スタイト.Set(7, 11, DI::左, false);
+	兵士A.Set(7, 6, DI::上);
+	兵士B.Set(11, 7, DI::左);
+	BackChenge(EStage::店内);
 	TO
 		兵士A.E音符();
 	TO
 		セオ.Mes("ありがとうございました");
-		兵士A.Move(0, 6, 4);
+	兵士A.Move(0, 6, 4);
 	TO
 		スタイト.Move(0, -5, 4);
 	TO
@@ -1504,10 +1515,10 @@ void EVE_SUB::_1_2_4()
 		スタイト.Mes("やぁ久しぶり");
 	TO
 		スタイト.Right();
-		スタイト.E思考();
+	スタイト.E思考();
 	TO
 		スタイト.Up();
-		スタイト.Mes("前より従業員が増えてるけど＠武器屋って儲かるんだな");
+	スタイト.Mes("前より従業員が増えてるけど＠武器屋って儲かるんだな");
 	TO
 		セオ.Mes("いやぁ、なかなか厳しいですね");
 	TO
@@ -1558,11 +1569,11 @@ void EVE_SUB::_1_3_1()
 	//なぜか登場したカノン工務店
 
 	START
-		セオ.Set( 7, 4, DI::左);
-		ファクト.Set( -1, 4, DI::左, false);
-		トウツグ.Set( -1, 3, DI::左);
-		棟梁.Set( 7, 11, DI::上, false);
-		BackChenge(EStage::店内);
+		セオ.Set(7, 4, DI::左);
+	ファクト.Set(-1, 4, DI::左, false);
+	トウツグ.Set(-1, 3, DI::左);
+	棟梁.Set(7, 11, DI::上, false);
+	BackChenge(EStage::店内);
 	TO
 		ファクト.Move(7, 0);
 	トウツグ.Move(7, 0);
@@ -1644,10 +1655,10 @@ void EVE_SUB::_1_3_1()
 void EVE_SUB::_1_3_2()
 {
 	START
-		セオ.Set( 7, 4, DI::下);
-	ルルファ.Set( 15, 6, DI::右);
-	ニット.Set( 6.5, 11, DI::左, false);
-	レイブル.Set( 7.5, 12, DI::左, false);
+		セオ.Set(7, 4, DI::下);
+	ルルファ.Set(15, 6, DI::右);
+	ニット.Set(6.5, 11, DI::左, false);
+	レイブル.Set(7.5, 12, DI::左, false);
 	BackChenge(EStage::店内);
 	TO
 		ニット.Move(0, -5);
@@ -1736,8 +1747,8 @@ void EVE_SUB::_1_3_2()
 void EVE_SUB::_1_3_3()
 {
 	START
-		セオ.Set( 7, 4, DI::左);
-	ファクト.Set( 6, 4, DI::右);
+		セオ.Set(7, 4, DI::左);
+	ファクト.Set(6, 4, DI::右);
 	BackChenge(EStage::店内);
 	TO
 		ファクト.Mes("いよいよ、明日だね");
@@ -1752,26 +1763,26 @@ void EVE_SUB::_1_3_3()
 	TO
 		セオ.Mes("どうせ大したことないだろ");
 	TO
-		カノン.Set( 7, 11, DI::左, false);
-		カノン.Mes("それは聞き捨てならないです");
+		カノン.Set(7, 11, DI::左, false);
+	カノン.Mes("それは聞き捨てならないです");
 	TO
 		カノン.Move(0, -5);
 	TO
 		セオ.Down();
-		ファクト.Down();
-		セオ.Mes("いらっしゃいませ");
+	ファクト.Down();
+	セオ.Mes("いらっしゃいませ");
 	TO
 		カノン.Mes("客じゃないです");
 	TO
 		セオ.Left();
-		ファクト.Right();
-		セオ.Mes("知り合い？");
+	ファクト.Right();
+	セオ.Mes("知り合い？");
 	TO
 		ファクト.Mes("多分違うと思う");
 	TO
 		セオ.Down();
-		ファクト.Down();
-		カノン.Mes("カノン工房、社長のカノンです＠開店前の挨拶に来ました");
+	ファクト.Down();
+	カノン.Mes("カノン工房、社長のカノンです＠開店前の挨拶に来ました");
 	TO
 		セオ.Mes("それはどうも");
 	TO
@@ -1786,8 +1797,8 @@ void EVE_SUB::_1_3_3()
 		カノン.Move(0, 6);
 	TO
 		セオ.Left();
-		ファクト.Right();
-		セオ.Mes("言ったとおりだろ？");
+	ファクト.Right();
+	セオ.Mes("言ったとおりだろ？");
 	TO
 		ファクト.Mes("そうだね");
 	END
@@ -1808,17 +1819,17 @@ void EVE_SUB::_1_3_4()
 void EVE_SUB::_1_4_1()
 {
 	START
-		セオ.Set( 7.5, 6, DI::下);
-		ファクト.Set( 6.5, 8, DI::上, false);
-		トウツグ.Set( 7.5, 8, DI::上, false);
-		ルルファ.Set( 8.5, 8, DI::上, false);
-		BackChenge(EStage::店内);
+		セオ.Set(7.5, 6, DI::下);
+	ファクト.Set(6.5, 8, DI::上, false);
+	トウツグ.Set(7.5, 8, DI::上, false);
+	ルルファ.Set(8.5, 8, DI::上, false);
+	BackChenge(EStage::店内);
 	TO
 		セオ.Mes("おはようございます");
 	TO
 		ファクト.Mes("おはようございます");
-		トウツグ.Mes("おはようございます");
-		ルルファ.Mes("おはようございます");
+	トウツグ.Mes("おはようございます");
+	ルルファ.Mes("おはようございます");
 	TO
 		セオ.Mes("先月は例の発見もあってハンターが増えだし＠武器の売れ行きどんどん増えています");
 	TO
@@ -1831,8 +1842,8 @@ void EVE_SUB::_1_4_1()
 		セオ.Mes("それでは今日も１日よろしくおねがいします");
 	TO
 		ファクト.Mes("よろしくおねがいします");
-		トウツグ.Mes("よろしくおねがいします");
-		ルルファ.Mes("よろしくおねがいします");
+	トウツグ.Mes("よろしくおねがいします");
+	ルルファ.Mes("よろしくおねがいします");
 	END
 }
 
@@ -1871,9 +1882,9 @@ void EVE_SUB::_1_4_5()
 {
 	//従業員の管理をしよう的な提案
 	START
-		セオ.Set( 6, 4, DI::下);
-		ファクト.Set( 6, 8, DI::上);
-		BackChenge(EStage::会議室);
+		セオ.Set(6, 4, DI::下);
+	ファクト.Set(6, 8, DI::上);
+	BackChenge(EStage::会議室);
 	TO
 		ファクト.Mes("話って何？");
 	TO
@@ -1916,9 +1927,9 @@ void EVE_SUB::_1_5_2()
 void EVE_SUB::_1_5_3()
 {
 	START
-		セオ.Set( 7, 4, DI::下);
-		ルルファ.Set( 2, 2, DI::下, false);
-		BackChenge(EStage::店内);
+		セオ.Set(7, 4, DI::下);
+	ルルファ.Set(2, 2, DI::下, false);
+	BackChenge(EStage::店内);
 	TO
 		ルルファ.Move(0, 2);
 	TO
@@ -1927,7 +1938,7 @@ void EVE_SUB::_1_5_3()
 		ルルファ.Mes("社長、おはようございます！");
 	TO
 		セオ.Left();
-		セオ.Mes("おはよう、ルルファさん");
+	セオ.Mes("おはよう、ルルファさん");
 	TO
 		セオ.E音符();
 	TO

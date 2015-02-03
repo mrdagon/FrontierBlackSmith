@@ -3440,47 +3440,47 @@ int DRA::drama(){
 	mes(data.window_x/2-196,data.window_y/2-146,EVE_FUN::Sin().eve_name.c_str(),color.kuro,color.siro,0);
 
 	//人表示
-	for(i=0;i<32;i++){
+	for(i=0;i<36;i++){
 
-		if (act[i].no<0)continue;
-		act[i].p = act[i].m *3 + 1;
+		if (act[i]->no<0)continue;
+		act[i]->p = act[i]->m *3 + 1;
 		for(int cnt =0; cnt<1+Inp.m_RO*2;cnt++){
-			if(act[i].mx < 0){//移動処理
-				act[i].mx += act[i].sp;
-				act[i].x -= act[i].sp;
-				act[i].p = act[i].m *3 + (act[i].x/10%4+1)%3;
+			if(act[i]->mx < 0){//移動処理
+				act[i]->mx += act[i]->sp;
+				act[i]->x -= act[i]->sp;
+				act[i]->p = act[i]->m *3 + (act[i]->x/10%4+1)%3;
 			}
-			if(act[i].mx > 0){
-				act[i].mx -= act[i].sp;
-				act[i].x += act[i].sp;
-				act[i].p = act[i].m *3 + (act[i].x/10%4+1)%3;
+			if(act[i]->mx > 0){
+				act[i]->mx -= act[i]->sp;
+				act[i]->x += act[i]->sp;
+				act[i]->p = act[i]->m *3 + (act[i]->x/10%4+1)%3;
 			}
-			if(act[i].my < 0){
-				act[i].my += act[i].sp;
-				act[i].y -= act[i].sp;
-				act[i].p = act[i].m *3 + (act[i].y/10%4+1)%3;
+			if(act[i]->my < 0){
+				act[i]->my += act[i]->sp;
+				act[i]->y -= act[i]->sp;
+				act[i]->p = act[i]->m *3 + (act[i]->y/10%4+1)%3;
 			}
-			if(act[i].my > 0){
-				act[i].my -= act[i].sp;
-				act[i].y += act[i].sp;
-				act[i].p = act[i].m *3 + (act[i].y/10%4+1)%3;
+			if(act[i]->my > 0){
+				act[i]->my -= act[i]->sp;
+				act[i]->y += act[i]->sp;
+				act[i]->p = act[i]->m *3 + (act[i]->y/10%4+1)%3;
 			}
 		}
-		if(act[i].emo == 13		 && EVE_FUN::Sin().eve_wait <= 20)act[i].emo = 12;//・・・
-		else if(act[i].emo == 12 && EVE_FUN::Sin().eve_wait <= 10)act[i].emo = 11;
+		if(act[i]->emo == 13		 && EVE_FUN::Sin().eve_wait <= 20)act[i]->emo = 12;//・・・
+		else if(act[i]->emo == 12 && EVE_FUN::Sin().eve_wait <= 10)act[i]->emo = 11;
 		//向きの計算
 
-		DrawRotaGraph(act[i].x,act[i].y,2,0,gra.unit[act[i].no][act[i].p],1,0);//SD
+		DrawRotaGraph(act[i]->x,act[i]->y,2,0,gra.unit[act[i]->no][act[i]->p],1,0);//SD
 	}
 	SetDrawArea(0,0,data.window_x,data.window_y);
 	//感情
-	for(i=0;i<32;i++)
+	for(i=0;i<36;i++)
 	{
-		if(act[i].emo>=0)DrawRotaGraph(act[i].x,act[i].y-30,2,0,gra.emo[act[i].emo],1,0);//感情
+		if(act[i]->emo>=0)DrawRotaGraph(act[i]->x,act[i]->y-30,2,0,gra.emo[act[i]->emo],1,0);//感情
 	}
 	//噴出し
-	for(i=0;i<32;i++){
-		if(act[i].huki_w <=0 ) continue;
+	for(i=0;i<36;i++){
+		if(act[i]->huki_w <=0 ) continue;
 		draw.waku_h(i);
 	}
 
@@ -3525,27 +3525,27 @@ int DRA::waku_h(int N){
 	SY = 20;
 
 	//枠＆噴出し表示
-	if(act[N].huki_ud == 1){//下
-		waku_c(act[N].x-act[N].huki_w/2-1,act[N].y+24,act[N].huki_w+2,act[N].huki_h+2,0,0,0);
-		waku(act[N].x-act[N].huki_w/2,act[N].y+25,act[N].huki_w,act[N].huki_h,6);
-		DrawRotaGraph(act[N].x,act[N].y+26,1,0,gra.huki[1],1,0);
+	if(act[N]->huki_ud == 1){//下
+		waku_c(act[N]->x-act[N]->huki_w/2-1,act[N]->y+24,act[N]->huki_w+2,act[N]->huki_h+2,0,0,0);
+		waku(act[N]->x-act[N]->huki_w/2,act[N]->y+25,act[N]->huki_w,act[N]->huki_h,6);
+		DrawRotaGraph(act[N]->x,act[N]->y+26,1,0,gra.huki[1],1,0);
 		Y = -10;
 	}else{//上
-		waku_c(act[N].x-act[N].huki_w/2-1,act[N].y-29-act[N].huki_h,act[N].huki_w+2,act[N].huki_h+2,0,0,0);
-		waku(act[N].x-act[N].huki_w/2,act[N].y-28-act[N].huki_h,act[N].huki_w,act[N].huki_h,6);
-		DrawRotaGraph(act[N].x,act[N].y-24,1,0,gra.huki[0],1,0);
-		Y = - act[N].huki_h - 64;
+		waku_c(act[N]->x-act[N]->huki_w/2-1,act[N]->y-29-act[N]->huki_h,act[N]->huki_w+2,act[N]->huki_h+2,0,0,0);
+		waku(act[N]->x-act[N]->huki_w/2,act[N]->y-28-act[N]->huki_h,act[N]->huki_w,act[N]->huki_h,6);
+		DrawRotaGraph(act[N]->x,act[N]->y-24,1,0,gra.huki[0],1,0);
+		Y = - act[N]->huki_h - 64;
 	}
 	//名前用ウィンドウ
-	waku_c(act[N].x-act[N].huki_w/2+6,act[N].y+38+Y,act[N].name_w,20,0,0,0);
-	waku_c(act[N].x-act[N].huki_w/2+7,act[N].y+39+Y,act[N].name_w-2,18,255,255,255);
+	waku_c(act[N]->x-act[N]->huki_w/2+6,act[N]->y+38+Y,act[N]->name_w,20,0,0,0);
+	waku_c(act[N]->x-act[N]->huki_w/2+7,act[N]->y+39+Y,act[N]->name_w-2,18,255,255,255);
 
 	//文章
-	mes(act[N].x-act[N].huki_w/2+10,act[N].y+42+Y     ,act[N].name,color.kuro,color.siro,2);
+	mes(act[N]->x-act[N]->huki_w/2+10,act[N]->y+42+Y     ,act[N]->name,color.kuro,color.siro,2);
 
-	mes(act[N].x-act[N].huki_w/2+8,act[N].y+59+Y     ,act[N].huki_mes[0],color.kuro,color.siro,0);
-	mes(act[N].x-act[N].huki_w/2+8,act[N].y+59+Y+SY  ,act[N].huki_mes[1],color.kuro,color.siro,0);
-	mes(act[N].x-act[N].huki_w/2+8,act[N].y+59+Y+SY*2,act[N].huki_mes[2],color.kuro,color.siro,0);
+	mes(act[N]->x-act[N]->huki_w/2+8,act[N]->y+59+Y     ,act[N]->huki_mes[0],color.kuro,color.siro,0);
+	mes(act[N]->x-act[N]->huki_w/2+8,act[N]->y+59+Y+SY  ,act[N]->huki_mes[1],color.kuro,color.siro,0);
+	mes(act[N]->x-act[N]->huki_w/2+8,act[N]->y+59+Y+SY*2,act[N]->huki_mes[2],color.kuro,color.siro,0);
 
 	return 1;
 }

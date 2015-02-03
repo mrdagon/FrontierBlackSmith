@@ -1171,7 +1171,8 @@ public:
 	int ending();
 }draw;
 
-ACTER* act[36];
+#define ACT_COUNT 37
+ACTER* act[ACT_COUNT];
 
 ACTER セオ;//FBS関係
 ACTER ルルファ;
@@ -1204,7 +1205,7 @@ ACTER レンジ;
 
 ACTER プロフェッサー;//協会会長
 ACTER ジョッシュ;
-ACTER メイコ;
+ACTER メイ;
 
 ACTER 語り部;
 
@@ -1221,6 +1222,7 @@ ACTER 兵士C;
 ACTER 兵士D;
 
 ACTER 受付;
+ACTER 役人;
 ACTER 店員;
 ACTER 司会;
 

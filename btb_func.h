@@ -50,7 +50,7 @@ int FUN::main()
 	sys.date = day;
 
 	/*シナリオテスト*/
-	//EVE_FUN::Sin().eve_test();
+	EVE_FUN::Sin().eve_test();
 
 	while(1)
 	{
@@ -5936,7 +5936,7 @@ int FUN::eve_syori(int E/*イベント発生処理*/){
 		}
 
 		bool isMoved = true;
-		for( int i=0;i<36;i++)
+		for( int i=0;i<ACT_COUNT;i++)
 		{
 			if( act[i]->mx != 0 || act[i]->my != 0 ) isMoved = false;
 		}
@@ -5944,7 +5944,7 @@ int FUN::eve_syori(int E/*イベント発生処理*/){
 		if( EVE_FUN::Sin().eve_wait<=0 && EVE_FUN::Sin().eve_next == 1 && isMoved)
 		{
 			EVE_FUN::Sin().eve_next = 0;
-			for(int i=0;i<36;i++)
+			for(int i=0;i<ACT_COUNT;i++)
 			{
 				act[i]->emo = -1;
 				act[i]->huki_w = 0;

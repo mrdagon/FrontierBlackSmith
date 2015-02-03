@@ -13,7 +13,7 @@ void EVE_FUN::eve_test()
 {
 	while(1)
 	{
-		fun.eve_syori(1);
+		fun.eve_syori(0);
 		//イベントチェック
 		if(fun.err_c()== -1) break;
 	}
@@ -71,6 +71,59 @@ void EVE_FUN::reset()
 	act[33] = &受付;
 	act[34] = &店員;
 	act[35] = &司会;
+	act[36] = &役人;
+
+	セオ.no = 1;//FBS関係
+	ルルファ.no = 2;
+	ファクト.no = 3;
+	トウツグ.no = 4;
+	ヘルメス.no = 5;
+
+	カノン.no = 11;//カノン工房関係
+
+	ヒトフリサイ.no = 20;//極月関係
+	ジンイチ.no = 21;
+	ケンヒメ.no = 22;
+
+	リークオ.no = 25;//ゴランノス関連
+	ポンサー.no = 26;
+	カクシャ.no = 27;
+
+	シロ.no = 30;//ハンター
+
+	ニット.no = 31;//ルルファ兄
+	レイブル.no = 32;
+
+	サンダー.no = 33;//がらの悪いハンター二人組み
+	ファイア.no = 34;
+
+	ファイタ.no = 36;//新米ハンター達
+	メディ.no = 37;
+	パラコ.no = 38;
+	レンジ.no = 39;
+
+	プロフェッサー.no = 43;//協会会長
+	ジョッシュ.no = 44;
+	メイ.no = 45;
+
+	語り部.no = 46;
+
+	スタイト.no = 47;//副総督
+	ハルファド.no = 48;//総督
+
+	記者.no = 51;
+
+	棟梁.no = 56;
+
+	兵士A.no = 52;
+	兵士B.no = 52;
+	兵士C.no = 52;
+	兵士D.no = 52;
+
+	受付.no = 53;
+	役人.no = 57;
+	店員.no = 54;
+	司会.no = 55;
 
 	eve_end = 0;
 	eve_line = 0;
@@ -79,14 +132,14 @@ void EVE_FUN::reset()
 	eve_black = 0;
 	eve_bback = 0;
 
-	for (int i = 0; i < 36; i++)
+	for (int i = 0; i < ACT_COUNT; i++)
 	{
-		act[i]->no = -1;
 		act[i]->x = -1000;//画面外に置く
 		act[i]->mx = 0;
 		act[i]->my = 0;
 		act[i]->sp = 4;
 		act[i]->huki_w = 0;
+		act[i]->huki_h = 0;
 	}
 }
 
@@ -405,7 +458,7 @@ void ACTER::Move(double MX,double MY,int S )
 	EVE_FUN::Sin().eve_next = 1;
 }
 void ACTER::Emo(EM em){
-	for (int i = 0; i<36; i++)
+	for (int i = 0; i<ACT_COUNT; i++)
 	{
 		act[i]->huki_w = 0;
 	}
