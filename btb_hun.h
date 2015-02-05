@@ -117,7 +117,8 @@ int HUNTER::select_item(){
 	int W,L;
 	int M_W=0;//–£—ÍÅ‘å•Ší
 	int M_M=0;
-	int M_C=-1;
+	int M_C = -1;
+	int yosan = cul_yosan();
 
 	if(data.boom == 7) like_t[0] *= 2;
 	if(data.boom == 8) like_t[1] *= 2;
@@ -132,11 +133,17 @@ int HUNTER::select_item(){
 	for(W=0,L=0,total_m=0;W<WEP_M;W++){//•Ší–£—ÍŒvZ
 		if( wep[W].type == wep_now 	&&
 			shop[S].wep_rest[W] > 0 &&
-			cul_yosan() > wep[W].price * shop[S].price_rate &&
 			W != NOU_NO	){
 			if(wep[W].ninki[0]>0)		wep_m[L]  = int(wep[W].ninki[0] * shop[S].ninki_j[W] * like_t[0] * shop[S].ninki_b[0] / 100);
 			else if(wep[W].ninki[1]>0)	wep_m[L]  = int(wep[W].ninki[1] * shop[S].ninki_j[W] * like_t[1] * shop[S].ninki_b[1] / 100);
 			else if(wep[W].ninki[2]>0)	wep_m[L]  = int(wep[W].ninki[2] * shop[S].ninki_j[W] * like_t[2] * shop[S].ninki_b[2] / 100);
+
+			//—\Z•s‘«‚Ìê‡A–£—Í‚ğŒyŒ¸‚µ‚ÄŒvZ
+			if (yosan < wep[W].price * shop[S].price_rate)
+			{
+				double rate = 0.5 * yosan / (wep[W].price * shop[S].price_rate);
+				wep_m[L] = wep_m[L] * rate;
+			}
 
 			total_m += wep_m[L];
 			wep_n[L] = W;
