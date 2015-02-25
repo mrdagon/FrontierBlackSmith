@@ -1010,7 +1010,7 @@ public:
 	act[1].Set(EChara::ルルファ,6,10,DI::左);
 	act[2].Set(EChara::ファイア,6,10,DI::左);
 	act[3].Set(EChara::アイス,6,10,DI::左);
-	act[4].Set(EChara::サンダー,6,10,DI::左);
+	act[4].Set(EChara::カーン,6,10,DI::左);
 	BackChenge(EStage::店内);
 	END
 	}
