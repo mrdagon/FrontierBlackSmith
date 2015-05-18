@@ -9,7 +9,12 @@
 #include "btb_mana.h"
 #include "btb_shop.h"
 #include "btb_tutolial.h"
-
+//todo
+//イベントの再編
+//祭り削除済み、チュートリアルの一覧からも消す、ファイル名の変更
+//○各モード開始時のイベントを削除
+//
+//
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow )
 {
 	// 実行ファイルのフルパス取得

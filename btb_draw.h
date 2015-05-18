@@ -5070,7 +5070,7 @@ int DRA::tutorial_menu(){
     else if(Inp.m_x >= X+20  && Inp.m_x<= X+320) N = ( Inp.m_y-(data.window_y/2-210) ) / 36;
     else if(Inp.m_x >= X+330 && Inp.m_x<= X+630) N = ( Inp.m_y-(data.window_y/2-210) ) / 36 + 10;
 
-    for(int i=0;i<20;i++){
+    for(int i=0;i<19;i++){
         if(N==i) waku_c(X+20+i/10*300,Y+30+i%10*36,260,28,200,200,255);
         else	 waku_c(X+20+i/10*300,Y+30+i%10*36,260,28,255,255,255);
         ///sys.help_flag[i] = 1;
@@ -5092,11 +5092,11 @@ int DRA::tutorial_menu(){
                 case 12:mes(X+30+i/10*300,Y+30+i%10*36,"工事部",color.kuro,color.siro,1);break;
                 case 13:mes(X+30+i/10*300,Y+30+i%10*36,"開発部",color.kuro,color.siro,1);break;
                 case 14:mes(X+30+i/10*300,Y+30+i%10*36,"宣伝部",color.kuro,color.siro,1);break;
-                case 15:mes(X+30+i/10*300,Y+30+i%10*36,"祭り",color.kuro,color.siro,1);break;
-                case 16:mes(X+30+i/10*300,Y+30+i%10*36,"フリーモード",color.kuro,color.siro,1);break;
-                case 17:mes(X+30+i/10*300,Y+30+i%10*36,"ゲームオーバー",color.kuro,color.siro,1);break;
-                case 18:mes(X+30+i/10*300,Y+30+i%10*36,"タイトル画面",color.kuro,color.siro,1);break;
-                case 19:mes(X+30+i/10*300,Y+30+i%10*36,"提供",color.kuro,color.siro,1);break;
+                //case 15:mes(X+30+i/10*300,Y+30+i%10*36,"祭り",color.kuro,color.siro,1);break;
+                case 15:mes(X+30+i/10*300,Y+30+i%10*36,"フリーモード",color.kuro,color.siro,1);break;
+                case 16:mes(X+30+i/10*300,Y+30+i%10*36,"ゲームオーバー",color.kuro,color.siro,1);break;
+                case 17:mes(X+30+i/10*300,Y+30+i%10*36,"タイトル画面",color.kuro,color.siro,1);break;
+                case 18:mes(X+30+i/10*300,Y+30+i%10*36,"提供",color.kuro,color.siro,1);break;
             }
 
         }else mes(X+30+i/10*300,Y+30+i%10*36,"????",color.kuro,color.siro,1);
