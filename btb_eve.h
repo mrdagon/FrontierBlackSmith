@@ -246,7 +246,7 @@ void EVE_FUN::eve_efe(int E)
 		break;
 		case 41://チュートリアル終了 1_4_1
 			data.jinkou_up = 50;
-			fun.tutorial(19);
+			fun.tutorial(18);
 			sys.clear = 1;
 		break;
 		//以下没

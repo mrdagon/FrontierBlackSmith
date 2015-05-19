@@ -115,7 +115,7 @@ int FUN::title(){
                 case 12://メダル
                     if(  !sys.play_flag[1] ) break;
                     se_ok(4);
-                    fun.tutorial(17);
+                    fun.tutorial(16);
                     if(L==9)fun.wep_db();
                     if(L==10)fun.mana_db();
                     if(L==11)fun.record_db();
@@ -213,7 +213,7 @@ int FUN::credit_db(){
 
 int FUN::game_over(){
 
-    fun.tutorial(18);
+    fun.tutorial(17);
     
     //画面ややグレー
     draw.work();
@@ -267,7 +267,7 @@ int FUN::select_mode(){
                 time_t timer;
                 struct tm t_st;
 
-                /* 現在時刻の取得 */			
+                /* 現在時刻の取得 */
                 timer = time(NULL);
                 /* 現在時刻を構造体に変換 */
                 localtime_s(&t_st,&timer);
@@ -4007,6 +4007,12 @@ int FUN::work_main(){
     int time_s = data.play_time;
     opt.speed = 1;
     opt.speed_max = 1;
+
+	if (data.mode != 0)
+	{
+		//フリーモード初回時にチュートリアル表示
+		fun.tutorial(15);
+	}
 
     while(1){
 

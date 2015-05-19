@@ -33,7 +33,7 @@ int DRA::tutorial_00(int PA,int N/*客情報*/){
 		case  15:return 5;//フリーモード-●//初フリープレイ時
 		case  16:return 5;//タイトル画面●//初起動時
 		case  17:return 1;//ゲームオーバー●//倒産時
-		case  18:return 1;//提供●//没
+		case  18:return 1;//チュートリアル終了●
 	}
 
 
