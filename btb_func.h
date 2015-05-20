@@ -5882,7 +5882,7 @@ int FUN::sell_data_cul(int N/*収支情報計算*/){
 int FUN::eve_check(/*イベント条件判定処理*/){
 
     //イベント処理
-    for(int i=0;i<100;i++){//とりあえずターンだけ判定		
+    for(int i=0;i<45;i++){//とりあえずターンだけ判定		
         if(data.mode != 0 && i >= 22 ) break;
         if(i < 20 && i !=  data.mode) continue;
         //0~19各モード専用
