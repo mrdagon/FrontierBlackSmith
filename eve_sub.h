@@ -51,6 +51,7 @@ public:
 	char name[15];//–¼‘O
 
 	void Set( double X, double Y, DI M, bool isUp = true);
+	void Warp(double X, double Y, DI M, bool isUp = true);
 	void Mes(const char *M);
 	void HukiUp(bool isUp);
 	void Move(double MX, double MY, int S = 4);

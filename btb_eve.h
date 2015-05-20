@@ -13,7 +13,7 @@ void EVE_FUN::eve_test()
 {
 	while(1)
 	{
-		fun.eve_syori(0);
+		fun.eve_syori(31);
 		//イベントチェック
 		if(fun.err_c()== -1) break;
 	}
@@ -441,11 +441,23 @@ void ACTER::Set(double  X,double  Y,DI M,bool isUp)
 	y = data.window_y/2 - 162 + int(Y * 32) - 16;
 	huki_ud = 1 - isUp;
 	
-	sprintf_s(name,emp[no].name.c_str());
+	sprintf_s(name, emp[no].name.c_str());
 	no = emp[no].gra;
-	
-	name_w = strlen( name )*9;
+
+	name_w = strlen(name) * 9;
 }
+void ACTER::Warp(double  X, double  Y, DI M, bool isUp)
+{
+	emo = -1;
+	mx = 0;
+	my = 0;
+	m = (int)M;
+	p = (int)M * 3 + 1;
+	x = data.window_x / 2 - 212 + int(X * 32) - 14;
+	y = data.window_y / 2 - 162 + int(Y * 32) - 16;
+	huki_ud = 1 - isUp;
+}
+
 void ACTER::Move(double MX,double MY,int S )
 {
 

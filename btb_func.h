@@ -50,7 +50,7 @@ int FUN::main()
     sys.date = day;
 
     /*シナリオテスト*/
-    //EVE_FUN::Sin().eve_test();
+    EVE_FUN::Sin().eve_test();
 
     while(1)
     {
@@ -5608,6 +5608,32 @@ int FUN::customer_act(/*客処理*/){
     }
     return 1;
 }
+int FUN::shop_act(/*店舗処理*/){
+	int S, H, C;
+	//店員の待機時間減少
+	for (S = 0; S<SHOP_M; S++){
+		for (H = 0; H<shop[S].emp_cnt; H++){
+			int E = shop[S].emp_list[H];
+			if (emp[E].rest > 0){//休み中は対応不可能
+				emp[E].wait = 1;
+				continue;
+			}
+			emp[E].wait--;
+		}
+	}
+
+	//客へ対応可能かチェック
+	for (S = 0; S<SHOP_M; S++){
+		for (H = 0; H<SHOP_SP; H++){
+			if (shop[S].cust_list[H] <0)continue;
+			C = shop[S].cust_list[H];
+			if (hun[C].act == 1 || hun[C].act == 3){//客orクレーマーのみ対応可能
+				emp_act(S, C);
+			}
+		}
+	}
+	return 1;
+}
 int FUN::emp_act(int S,int C){
     //シフトが同じ店員からランダムで選択
     //無ければALLからランダム
@@ -5864,12 +5890,9 @@ int FUN::eve_check(/*イベント条件判定処理*/){
 	if (data.mode != 0){ return 0; }
 
     //イベント処理
-<<<<<<< HEAD
-    for(int i=0;i<45;i++){//とりあえずターンだけ判定		
+    for(int i=0;i<45;i++)
+	{//とりあえずターンだけ判定		
         if(data.mode != 0 && i >= 22 ) break;
-=======
-    for(int i=0;i<100;i++){//とりあえずターンだけ判定		
->>>>>>> origin/master
         if(i < 20 && i !=  data.mode) continue;
         //0~20各モード専用
         //21～mode0専用イベント
