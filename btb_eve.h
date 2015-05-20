@@ -155,81 +155,78 @@ void EVE_FUN::eve_efe(int E)
 	//終了後効果、チュートリアル導入等
 	switch( E )
 	{
-		case 23://開店
+		case 22://開店//1_1_2
 			wind.ok[1] = 1;
 			wind.ok[5] = 1;	
 			fun.tutorial(0);
 		break;
-		case 24://つるはし製造開始
+		case 23://つるはし製造開始//1_1_3
 			shop[0].wep_cre[99] = 2;
 			fun.list_pw(99);
 			shop[0].nougu_req = 30;			
 			wind.ok[6] = 1;
 			fun.tutorial(1);
 		break;
-		case 25://営業許可Ａ
+		case 24://営業許可Ａ1_1_4
 			data.jinkou_up = 5;
 			for (int i = 0; i< 10; i++)	fun.make_hunter(1);
 			wind.ok[0] = 1;
 			wind.ok[2] = 1;
 			wind.ok[4] = 1;
 		break;
-		case 28://調査狩猟
+		case 26://調査狩猟 1_1_6
 			fun.tutorial(5);//ハンターの生活
 		break;
-		case 31://トウツグ採用
+		case 30://トウツグ採用 1_1_10
 			data.hirameki_rate = 100;
 			shop[0].hirameki_dayb = 100;
 			fun.tutorial(3);
 		break;
-		case 33://つるはし納品
+		case 31://つるはし納品 1_1_11
 			wind.ok[8] = 1;
 			shop[P].nougu_req = 0;
 			fun.tutorial(7);
 		break;
-		case 34://２か月目-ルルファ追加
+		case 32://２か月目-ルルファ追加 1_2_1
 			emp[2].plus(0);
 			emp[4].plus(0);
 			shop[0].nougu_req = 0;
 			wind.ok[7] = 1;
 			fun.tutorial(6);
 		break;
-		case 35://経営戦術
+		case 33://経営戦術 1_2_2
 			wind.ok[9] = 1;
 			shop[P].n_mp = 50;
 			shop[P].bumon_lv[0] = 1;
 			fun.tutorial(10);
 		break;
-		case 36://スタイトの視察
+		case 36://スタイトの視察 1_2_5
 			shop[0].nougu_req = 60;
 		break;
-		case 37://工事部
+		case 37://工事部 1_3_1
 			for(int S=0;S<5;S++){shop[S].bumon_lv[2] = 1;}
 			fun.tutorial(12);
 		break;
-		case 38://魔獣の研究
+		case 38://魔獣の研究 1_3_2
 			wind.ok[11] = 1;
 			data.jinkou_up = 100;
 			fun.tutorial(2);
 		break;
-		case 40://経営三ヶ月目
+		case 45://待遇改善要求 1_4_5
 			data.jinkou_up = 40;
 			wind.ok[3] = 1;
 			fun.tutorial(4);
 			fun.tutorial(8);
 		break;
-		case 44://財務部--増資
+		case 40://財務部--増資、残り戦術解放 1_3_4
 			for(int S=0;S<5;S++){shop[S].bumon_lv[1] = 1;}
+			for (int S = 0; S<5; S++){ shop[S].bumon_lv[3] = 1; }
+			for (int S = 0; S<5; S++){ shop[S].bumon_lv[4] = 1; }
 			fun.tutorial(11);
-		break;
-		case 45://ヘルメス採用
-			emp[6].plus(0);
-		break;
-		case 46://開発部
-			for(int S=0;S<5;S++){shop[S].bumon_lv[3] = 1;}
 			fun.tutorial(13);
+			fun.tutorial(14);
 		break;
-		case 47://カノン工房
+		case 39://カノン工房 1_3_3
 			data.shop_cnt = 2;
 			shop[1].create_lv[0] = 5;
 			shop[1].create_lv[1] = 6;
@@ -247,11 +244,18 @@ void EVE_FUN::eve_efe(int E)
 			fun.tutorial(9);
 			data.taiguu_ok = 1;
 		break;
+		case 41://チュートリアル終了 1_4_1
+			data.jinkou_up = 50;
+			fun.tutorial(18);
+			sys.clear = 1;
+		break;
+		//以下没
+		/*
 		case 48://昇給要求
 		break;
 		case 50://宣伝部
-			for(int S=0;S<5;S++){shop[S].bumon_lv[4] = 1;}
-			fun.tutorial(14);
+			//for(int S=0;S<5;S++){shop[S].bumon_lv[4] = 1;}
+			//fun.tutorial(14);
 		break;
 		case 52://ホワイトナイト			
 			data.shop_cnt = 3;
@@ -312,6 +316,7 @@ void EVE_FUN::eve_efe(int E)
 			fun.tutorial(19);
 			sys.clear = 1;
 		break;
+		*/
 	}
 }
 

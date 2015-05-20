@@ -14,8 +14,8 @@ int DRA::tutorial_00(int PA,int N/*客情報*/){
 	SetDrawArea(0,0,data.window_x,data.window_y);
 
 	switch(N){
-		case   0:return 7;//はじめに-●
-		case   1:return 2;//つるはし-●
+		case   0:return 7;//はじめに-●//23開店
+		case   1:return 2;//つるはし-●//
 		case   2:return 6;//店員-●
 		case   3:return 5;//職人-●
 		case   4:return 4;//雇用-●
@@ -29,11 +29,11 @@ int DRA::tutorial_00(int PA,int N/*客情報*/){
 		case  12:return 3;//工事部-●
 		case  13:return 3;//開発部-●
 		case  14:return 4;//宣伝部-●
-		case  15:return 2;//祭り-21●
-		case  16:return 5;//フリーモード-●
-		case  17:return 5;//タイトル画面●
-		case  18:return 1;//ゲームオーバー●
-		case  19:return 1;//提供●
+		//case  15:return 2;//祭り-21●-没
+		case  15:return 5;//フリーモード-●//初フリープレイ時
+		case  16:return 5;//タイトル画面●//初起動時
+		case  17:return 1;//ゲームオーバー●//倒産時
+		case  18:return 1;//チュートリアル終了●
 	}
 
 

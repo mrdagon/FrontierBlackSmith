@@ -115,7 +115,7 @@ int FUN::title(){
                 case 12://メダル
                     if(  !sys.play_flag[1] ) break;
                     se_ok(4);
-                    fun.tutorial(17);
+                    fun.tutorial(16);
                     if(L==9)fun.wep_db();
                     if(L==10)fun.mana_db();
                     if(L==11)fun.record_db();
@@ -213,7 +213,7 @@ int FUN::credit_db(){
 
 int FUN::game_over(){
 
-    fun.tutorial(18);
+    fun.tutorial(17);
     
     //画面ややグレー
     draw.work();
@@ -267,7 +267,7 @@ int FUN::select_mode(){
                 time_t timer;
                 struct tm t_st;
 
-                /* 現在時刻の取得 */			
+                /* 現在時刻の取得 */
                 timer = time(NULL);
                 /* 現在時刻を構造体に変換 */
                 localtime_s(&t_st,&timer);
@@ -4008,6 +4008,12 @@ int FUN::work_main(){
     opt.speed = 1;
     opt.speed_max = 1;
 
+	if (data.mode != 0)
+	{
+		//フリーモード初回時にチュートリアル表示
+		fun.tutorial(15);
+	}
+
     while(1){
 
         data.play_time = time_s + GetNowCount()/1000 - time;
@@ -5602,32 +5608,6 @@ int FUN::customer_act(/*客処理*/){
     }
     return 1;
 }
-int FUN::shop_act(/*店舗処理*/){
-    int S,H,C;
-    //店員の待機時間減少
-    for(S=0;S<SHOP_M;S++){
-        for(H=0;H<shop[S].emp_cnt;H++){
-            int E = shop[S].emp_list[H];
-            if(emp[E].rest > 0){//休み中は対応不可能
-                emp[E].wait=1;
-                continue;
-            }
-            emp[E].wait--;
-        }
-    }
-
-    //客へ対応可能かチェック
-    for(S=0;S<SHOP_M;S++){
-        for(H=0;H<SHOP_SP;H++){
-            if(shop[S].cust_list[H] <0 )continue;
-            C = shop[S].cust_list[H];
-            if(hun[C].act == 1 || hun[C].act == 3){//客orクレーマーのみ対応可能
-                emp_act(S,C);
-            }
-        }
-    }
-    return 1;
-}
 int FUN::emp_act(int S,int C){
     //シフトが同じ店員からランダムで選択
     //無ければALLからランダム
@@ -5880,14 +5860,19 @@ int FUN::sell_data_cul(int N/*収支情報計算*/){
 }
 /*イベント処理*/
 int FUN::eve_check(/*イベント条件判定処理*/){
+	
+	if (data.mode != 0){ return 0; }
 
     //イベント処理
+<<<<<<< HEAD
     for(int i=0;i<45;i++){//とりあえずターンだけ判定		
         if(data.mode != 0 && i >= 22 ) break;
+=======
+    for(int i=0;i<100;i++){//とりあえずターンだけ判定		
+>>>>>>> origin/master
         if(i < 20 && i !=  data.mode) continue;
-        //0~19各モード専用
-        //20,21祭り
-        //22～mode0専用イベント
+        //0~20各モード専用
+        //21～mode0専用イベント
         EVE_FUN::Sin().eve_line = -1;//条件処理用
         if( 
             data.time/600 == eve[i].time_req &&
