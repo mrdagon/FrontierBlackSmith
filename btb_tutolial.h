@@ -18,11 +18,11 @@ int DRA::tutorial_00(int PA,int N/*客情報*/){
 		case   1:return 2;//つるはし-●//
 		case   2:return 6;//店員-●
 		case   3:return 5;//職人-●
-		case   4:return 4;//雇用-●
+		case   4:return 4;//雇用-● ?
 		case   5:return 4;//ハンター-●
 		case   6:return 2;//ログ-●
 		case   7:return 5;//月末-●
-		case   8:return 3;//ブラック度-●
+		case   8:return 3;//ブラック度-● ?
 		case   9:return 5;//ライバル店-●
 		case  10:return 6;//経営部-●
 		case  11:return 3;//財務部-●

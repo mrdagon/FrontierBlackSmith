@@ -13,7 +13,7 @@ void EVE_FUN::eve_test()
 {
 	while(1)
 	{
-		fun.eve_syori(31);
+		fun.eve_syori(45);
 		//イベントチェック
 		if(fun.err_c()== -1) break;
 	}
@@ -163,13 +163,13 @@ void EVE_FUN::eve_efe(int E)
 		case 23://つるはし製造開始//1_1_3
 			shop[0].wep_cre[99] = 2;
 			fun.list_pw(99);
-			shop[0].nougu_req = 30;			
+			shop[0].nougu_req = 30;		
 			wind.ok[6] = 1;
 			fun.tutorial(1);
 		break;
 		case 24://営業許可Ａ1_1_4
-			data.jinkou_up = 5;
-			for (int i = 0; i< 10; i++)	fun.make_hunter(1);
+			data.jinkou_up = 20;
+			for (int i = 0; i< 30; i++)	fun.make_hunter(1);
 			wind.ok[0] = 1;
 			wind.ok[2] = 1;
 			wind.ok[4] = 1;
@@ -202,6 +202,8 @@ void EVE_FUN::eve_efe(int E)
 		break;
 		case 36://スタイトの視察 1_2_5
 			shop[0].nougu_req = 60;
+			fun.tutorial(4);//雇用
+			wind.ok[3] = 1;
 		break;
 		case 37://工事部 1_3_1
 			for(int S=0;S<5;S++){shop[S].bumon_lv[2] = 1;}
@@ -215,7 +217,6 @@ void EVE_FUN::eve_efe(int E)
 		case 45://待遇改善要求 1_4_5
 			data.jinkou_up = 40;
 			wind.ok[3] = 1;
-			fun.tutorial(4);
 			fun.tutorial(8);
 		break;
 		case 40://財務部--増資、残り戦術解放 1_3_4

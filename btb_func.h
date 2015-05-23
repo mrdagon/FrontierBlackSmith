@@ -49,9 +49,6 @@ int FUN::main()
 
     sys.date = day;
 
-    /*シナリオテスト*/
-    EVE_FUN::Sin().eve_test();
-
     while(1)
     {
         fun.bgm_ok(0);
@@ -5890,7 +5887,7 @@ int FUN::eve_check(/*イベント条件判定処理*/){
 	if (data.mode != 0){ return 0; }
 
     //イベント処理
-    for(int i=0;i<45;i++)
+    for(int i=0;i<=45;i++)
 	{//とりあえずターンだけ判定		
         if(data.mode != 0 && i >= 22 ) break;
         if(i < 20 && i !=  data.mode) continue;
