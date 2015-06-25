@@ -2464,7 +2464,7 @@ int DRA::win_7h(){
             win_hmes("’m–¼“x@");//”_‹ï”[•i
         break;
         case 5:
-            win_hmes("”_‹ï”[•i”/Œ»İ”@");//”_‹ï”[•i
+            win_hmes("’ß‹´”[•i”/Œ»İ”@");//”_‹ï”[•i
         break;
         case 6:
             win_hmes("‹x“ú”@’è‹x“ú•ƒ[ƒe[ƒVƒ‡ƒ“‹x“ú”@");//’è‹x“ú

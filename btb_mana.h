@@ -708,6 +708,10 @@ int EVE_FUN::mana_lvup(int S,int T){
 	if(shop[S].bumon_lv[T] == 0) return 1;
 
 	int REQ = shop[S].bumon_lv[T] * shop[S].bumon_lv[T] * 100 + 400;
+	if (shop[S].bumon_lv[T] > 5)
+	{
+		REQ = (shop[S].bumon_lv[T]-5) * 1000 + 400 + 2500;
+	}
 
 	if(shop[S].bumon_exp[T] >= REQ){//部門レベルアップ
 		shop[S].p_mp+=0.1;//回復量＋0.1
@@ -722,7 +726,7 @@ int EVE_FUN::mana_lvup(int S,int T){
 				break;
 			case 2://工事
 				if(shop[S].bumon_lv[T]%2 == 0)shop[S].mana_rest[121]++;
-				shop[S].souko_max+=50;
+				shop[S].souko_max+=200;
 				break;
 			case 3://開発
 				shop[S].hirameki_b[0]+=5;
@@ -1317,7 +1321,6 @@ int EVE_FUN::mana_061(/*株式買収・自社*/int S,int AI){
 	
 	_MANA_CUL____________________________________________
 		shop[S].kabu_cnt[0] -= shop[S].kabu_buy;
-		shop[S].kabu_max	-= shop[S].kabu_buy;
 		shop[S].kabu_price  += shop[S].kabu_price * shop[S].kabu_buy / shop[S].kabu_max;
 	_MANA_END____________________________________________
 
@@ -1448,7 +1451,6 @@ int EVE_FUN::mana_070(/*ボーナス制*/int S,int AI){
 int EVE_FUN::mana_071(/*増資*/int S,int AI){
 	
 	_MANA_CUL____________________________________________
-		shop[S].kabu_cnt[0] += shop[S].kabu_buy;
 		shop[S].kabu_max	+= shop[S].kabu_buy;
 		shop[S].kabu_price  -= shop[S].kabu_price * shop[S].kabu_buy / shop[S].kabu_max;
         shop[S].money       += shop[S].kabu_price * shop[S].kabu_buy;
@@ -1855,7 +1857,7 @@ int EVE_FUN::mana_121(/*店舗拡大*/int S,int AI){
 int EVE_FUN::mana_122(/*倉庫拡大*/int S,int AI){
 	
 	_MANA_CUL____________________________________________
-		shop[S].souko_max  += 100;
+		shop[S].souko_max  += 200;
 	_MANA_END____________________________________________
 
 	return 1000 - data.day - shop[S].souko_max;
