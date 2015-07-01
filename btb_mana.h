@@ -3396,11 +3396,11 @@ int EVE_FUN::mana_setumei(){
 	//‘S‚Ä‚Ìà–¾•¶‚ÌXVˆ—
 	std::ostringstream stream;
 	//1‹x“ú‘‰Á
-	stream << "Ğˆõ‚Ì‹x“ú‚ğ‘‚â‚·--‹x“ú@" << shop[P].yasumi_max << "“ú ¨ "<< shop[P].yasumi_max+1 << "“ú--MP‰ñ•œ—Ê{0.2" ;
+	stream << "Ğˆõ‚Ì‹x“ú‚ğ‘‚â‚·--‹x“ú@" << shop[P].yasumi_max << "“ú ¨ "<< shop[P].yasumi_max+2 << "“ú--MP‰ñ•œ—Ê{0.2" ;
 	mana[1].help = stream.str();stream.str("");
 
 	//2‹x“úŒ¸­
-	stream << "Ğˆõ‚Ì‹x“ú‚ğŒ¸‚ç‚·--‹x“ú@" << shop[P].yasumi_max << "“ú ¨ "<< shop[P].yasumi_max-1 << "“ú--MP‰ñ•œ—Ê|0.2";
+	stream << "Ğˆõ‚Ì‹x“ú‚ğŒ¸‚ç‚·--‹x“ú@" << shop[P].yasumi_max << "“ú ¨ "<< shop[P].yasumi_max-2 << "“ú--MP‰ñ•œ—Ê|0.2";
 	mana[2].help = stream.str();stream.str("");
 
 	//3c‹Æ§“x
