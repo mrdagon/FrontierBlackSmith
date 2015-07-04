@@ -281,16 +281,16 @@ int SHOP::hirameki_mana(){
 		mana_ok[139] = 0;
 	}
 
-	if(kabu_cnt[0] >= kabu_max)			mana_ok[61] = 0;
-	if(kabu_cnt[1] >= data.kabu_cnt[1]) mana_ok[62] = 0;
-	if(kabu_cnt[2] >= data.kabu_cnt[2]) mana_ok[63] = 0;
-	if(kabu_cnt[3] >= data.kabu_cnt[3]) mana_ok[64] = 0;
-	if(kabu_cnt[4] >= data.kabu_cnt[4]) mana_ok[65] = 0;
+	if (kabu_cnt[0] + kabu_buy >= kabu_max)			mana_ok[61] = 0;
+	if(kabu_cnt[1] + kabu_buy >= data.kabu_cnt[1]) mana_ok[62] = 0;
+	if (kabu_cnt[2] + kabu_buy >= data.kabu_cnt[2]) mana_ok[63] = 0;
+	if (kabu_cnt[3] + kabu_buy >= data.kabu_cnt[3]) mana_ok[64] = 0;
+	if (kabu_cnt[4] + kabu_buy >= data.kabu_cnt[4]) mana_ok[65] = 0;
 
-	if(kabu_cnt[1] <= 0) mana_ok[93] = 0;
-	if(kabu_cnt[2] <= 0) mana_ok[94] = 0;
-	if(kabu_cnt[3] <= 0) mana_ok[95] = 0;
-	if(kabu_cnt[4] <= 0) mana_ok[96] = 0;
+	if(kabu_cnt[1] <= kabu_buy) mana_ok[93] = 0;
+	if (kabu_cnt[2] <= kabu_buy) mana_ok[94] = 0;
+	if (kabu_cnt[3] <= kabu_buy) mana_ok[95] = 0;
+	if (kabu_cnt[4] <= kabu_buy) mana_ok[96] = 0;
 
 	fun.list_sort();
 

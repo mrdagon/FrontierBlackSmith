@@ -1018,6 +1018,7 @@ int DRA::win_7b(/*会社情報*/int X,int Y){
 
     //基本枠
     for(i=0;i<17;i++){
+
         if(i==0)XP=6;
         else if(i==8 || i==12) XP = 12; 
         else XP = 20;
@@ -1027,7 +1028,7 @@ int DRA::win_7b(/*会社情報*/int X,int Y){
             case 2 :XP =20;ICO=9;NAME  = "平均LV";TANI="";break;
             case 3 :XP =20;ICO=47;NAME = "ブラック度";TANI="％";break;
             case 4 :XP =20;ICO=78;NAME = "知名度";TANI = "％";break;
-            case 5 :XP =20;ICO=62;NAME = "農具納品";TANI="個";break;
+            case 5 :XP =20;ICO=62;NAME = "鶴嘴納品";TANI="個";break;
             case 6 :XP =20;ICO=51;NAME = "休日";TANI="日";break;
             case 7 :XP =12;ICO=7;NAME  = "技術レベル";TANI = "";break;
             case 8 :XP =20;ICO=1;NAME  = "研磨";break;
@@ -1045,14 +1046,14 @@ int DRA::win_7b(/*会社情報*/int X,int Y){
             waku(X+122,YP,150,25,6);
         }else{
             waku_c(X+XP,YP,272-XP,25,200,200,200);
-        }
+		}
+		if (ICO >= 0)DrawRotaGraph(X + XP + 14, YP + 13, 1, 0, gra.ico[ICO], TRUE, 0);//資金
+
         if(ICO == -1){
             mes(X+XP+6,YP+6,NAME.c_str(),color.kuro,color.siro,2);
         }else{
             mes(X+XP+26,YP+6,NAME.c_str(),color.kuro,color.siro,2);
         }
-        if(ICO>=0)DrawRotaGraph(X+XP+14,YP+13,1,0,gra.ico[ICO],TRUE,0);//資金
-
         int GL = 0;
         if(i >= 8 && i<=10){//ゲージ表示
             GL = shop[P].create_exp[i-8]*7/(shop[P].create_lv[i-8]+7) / WEP_EXP_RATE2;
@@ -1406,7 +1407,7 @@ int DRA::win_10b(/*経営戦略ウィンドウ*/int X,int Y){
             }
             waku_c(X+6,Y+YP  ,280,25,200,200,255);
             waku_c(X+8,Y+YP+2,76,21,150,150,255);
-            int EXP = shop[P].bumon_exp[MR]*2 / (shop[P].bumon_lv[MR] * shop[P].bumon_lv[MR] + 4);
+            int EXP = shop[P].bumon_exp[MR]*2 / min( 40 , shop[P].bumon_lv[MR] * shop[P].bumon_lv[MR] + 4);
             DrawRotaGraph(X+XP+14,Y+YP+12,1,0,gra.ico[data.mana_icon[mana[wind.mana_list[i]].type]],TRUE,0);
             waku_c(X+6+78,Y+YP+2,EXP,21,255,150,150);
             mes(X+6+28,Y+YP+6,name.c_str(),color.kuro,color.siro,2);
@@ -1455,7 +1456,7 @@ int DRA::win_11b(int X,int Y){
         case 0:
             mes_str(X+30,Y+110,"会社を大きくしよう！--",color.kuro,color.siro,0);
         break;
-        case 1:
+		default:
             mes_str(X+30,Y+110,"いずれかの勝利条件を目指そう！--",color.kuro,color.siro,0);
         break;
     }
@@ -2464,7 +2465,7 @@ int DRA::win_7h(){
             win_hmes("知名度@");//農具納品
         break;
         case 5:
-            win_hmes("鶴橋納品数/現在数@");//農具納品
+            win_hmes("現在数/必要数@");//農具納品
         break;
         case 6:
             win_hmes("休日数@定休日＆ローテーション休日数@");//定休日
@@ -2619,25 +2620,31 @@ int DRA::win_10h(){
     if(wind.info_no<MANA_M){//
         mana_info(wind.info_no);
     }else{//MP
+		int mp = 0;
         switch(wind.info_no){
             case 1000:
-                stream << "経営系戦術@EXP " << shop[P].bumon_exp[0]/10 << " / " << shop[P].bumon_lv[0]*shop[P].bumon_lv[0]*10 + 40 << "@";
+				mp = min(shop[P].bumon_lv[0] * shop[P].bumon_lv[0] * 10 + 40, 400);
+                stream << "経営系戦術@EXP " << shop[P].bumon_exp[0]/10 << " / " << mp << "@";
                 win_hmes(stream.str().c_str());
             break;
-            case 1001:
-                stream << "財務系戦術@EXP " << shop[P].bumon_exp[1]/10 << " / " << shop[P].bumon_lv[1]*shop[P].bumon_lv[1]*10 + 40 << "@";
+			case 1001:
+				mp = min(shop[P].bumon_lv[1] * shop[P].bumon_lv[1] * 10 + 40, 400);
+                stream << "財務系戦術@EXP " << shop[P].bumon_exp[1]/10 << " / " << mp << "@";
                 win_hmes(stream.str().c_str());
             break;
-            case 1002:
-                stream << "工事系戦術@EXP " << shop[P].bumon_exp[2]/10 << " / " << shop[P].bumon_lv[2]*shop[P].bumon_lv[2]*10 + 40  << "@";
+			case 1002:
+				mp = min(shop[P].bumon_lv[2] * shop[P].bumon_lv[2] * 10 + 40, 400);
+				stream << "工事系戦術@EXP " << shop[P].bumon_exp[2] / 10 << " / " << mp << "@";
                 win_hmes(stream.str().c_str());
             break;
-            case 1003:
-                stream << "開発系戦術@EXP " << shop[P].bumon_exp[3]/10 << " / " << shop[P].bumon_lv[3]*shop[P].bumon_lv[3]*10 + 40  << "@";
+			case 1003:
+				mp = min(shop[P].bumon_lv[3] * shop[P].bumon_lv[3] * 10 + 40, 400);
+				stream << "開発系戦術@EXP " << shop[P].bumon_exp[3] / 10 << " / " << mp << "@";
                 win_hmes(stream.str().c_str());
             break;
-            case 1004:
-                stream << "宣伝系戦術@EXP " << shop[P].bumon_exp[4]/10 << " / " << shop[P].bumon_lv[4]*shop[P].bumon_lv[4]*10 + 40  << "@";
+			case 1004:
+				mp = min(shop[P].bumon_lv[4] * shop[P].bumon_lv[4] * 10 + 40, 400);
+				stream << "宣伝系戦術@EXP " << shop[P].bumon_exp[4] / 10 << " / " << mp << "@";
                 win_hmes(stream.str().c_str());
             break;
             case 2000:
@@ -4760,25 +4767,60 @@ int DRA::select_mode(){
             case -1:
                 mes_str(X+30,Y+160,"モードを選択してください--",color.kuro,color.siro,0);
             break;
-            case 0:
-                //mes_str(X+30,Y+160,"フロンティア開拓において--重大な役割を果たした武器屋--歴史に埋もれ、知られざるその姿は--果たしてどのようなものであったか・・・",color.kuro,color.siro,0);
+            case 0://"初めての武器屋"
                 mes_str(X + 30, Y + 160, "武器屋を開こう！--チュートリアル兼世界観の説明です", color.kuro, color.siro, 0);
             break;
-            case 1://フリー
+            case 1://"自由経済"
                 mes_str(X+30,Y+160,"５つの武器屋で一番になろう！",color.kuro,color.siro,0);
             break;
-            case 2://ボーナス
+            case 2://メダルの王
                 mes_str(X+30,Y+160,"勲章が多いと有利になるよ！",color.kuro,color.siro,0);
             break;
-            case 3://資金
+            case 3://拝金主義
                 mes_str(X+30,Y+160,"お金をたくさん集めよう！",color.kuro,color.siro,0);
             break;
-            case 4://来客
+            case 4://千客万来
                 mes_str(X+30,Y+160,"お客さんを一杯集めよう！",color.kuro,color.siro,0);
             break;
-            case 5://株価
+            case 5://株を育てて
                 mes_str(X+30,Y+160,"時価総額を上げよう",color.kuro,color.siro,0);
             break;
+			case 6://"シェアNo1";//販売目標
+				mes_str(X + 30, Y + 160, "武器を売って売って売りまくろう", color.kuro, color.siro, 0);
+				break;
+			case 7://"つるはし大好き";//つるはし数目標
+				mes_str(X + 30, Y + 160, "世は鉱山時代、つるはしを沢山作ろう", color.kuro, color.siro, 0);
+				break;
+			case 8://"開拓最前線";//１店のみボス攻略数
+				mes_str(X + 30, Y + 160, "フロンティアを開拓しよう", color.kuro, color.siro, 0);
+				break;
+			case 9://"無双の斧";//カノン編-斧
+				mes_str(X + 30, Y + 160, "斧を作ろう！", color.kuro, color.siro, 0);
+				break;
+			case 10://"究極の槍";//ホワイトナイト-槍
+				mes_str(X + 30, Y + 160, "槍を作ろう！", color.kuro, color.siro, 0);
+				break;
+			case 11://"至高の剣";//月極-剣
+				mes_str(X + 30, Y + 160, "剣を作ろう！", color.kuro, color.siro, 0);
+				break;
+			case 12://"完璧の弓";//ゴランノス-弓
+				mes_str(X + 30, Y + 160, "弓を作ろう！", color.kuro, color.siro, 0);
+				break;
+			case 13://"ウェポンマイスター";//四種武器どれか
+				mes_str(X + 30, Y + 160, "何かを極めよう！", color.kuro, color.siro, 0);
+				break;
+			case 14://"アイスエイジ";//求職者超多い
+				mes_str(X + 30, Y + 160, "就職氷河期、雇う側が有利", color.kuro, color.siro, 0);
+				break;
+			case 15://"閃き道場";//閃き率がとても高い
+				mes_str(X + 30, Y + 160, "どんどん武器を閃くぞ", color.kuro, color.siro, 0);
+				break;
+			case 16://"大ハンター時代";//ハンターがとても多い
+				mes_str(X + 30, Y + 160, "ハンターがとても多い", color.kuro, color.siro, 0);
+				break;
+			case 17://data.mode_n[18] = "時代の終わり";//ハンターが増えない
+				mes_str(X + 30, Y + 160, "ハンターが増えないぞ", color.kuro, color.siro, 0);
+				break;
         }
     }
 
@@ -5094,8 +5136,8 @@ int DRA::tutorial_menu(){
                 case 14:mes(X+30+i/10*300,Y+30+i%10*36,"宣伝部",color.kuro,color.siro,1);break;
                 //case 15:mes(X+30+i/10*300,Y+30+i%10*36,"祭り",color.kuro,color.siro,1);break;
                 case 15:mes(X+30+i/10*300,Y+30+i%10*36,"フリーモード",color.kuro,color.siro,1);break;
-                case 16:mes(X+30+i/10*300,Y+30+i%10*36,"ゲームオーバー",color.kuro,color.siro,1);break;
-                case 17:mes(X+30+i/10*300,Y+30+i%10*36,"タイトル画面",color.kuro,color.siro,1);break;
+                case 16:mes(X+30+i/10*300,Y+30+i%10*36,"タイトル画面",color.kuro,color.siro,1);break;
+                case 17:mes(X+30+i/10*300,Y+30+i%10*36,"ゲームオーバー",color.kuro,color.siro,1);break;
                 case 18:mes(X+30+i/10*300,Y+30+i%10*36,"提供",color.kuro,color.siro,1);break;
             }
 

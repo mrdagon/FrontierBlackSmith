@@ -710,7 +710,7 @@ int EVE_FUN::mana_lvup(int S,int T){
 	int REQ = shop[S].bumon_lv[T] * shop[S].bumon_lv[T] * 100 + 400;
 	if (shop[S].bumon_lv[T] > 5)
 	{
-		REQ = (shop[S].bumon_lv[T]-5) * 1000 + 400 + 2500;
+		REQ = 4000;
 	}
 
 	if(shop[S].bumon_exp[T] >= REQ){//部門レベルアップ
@@ -1320,7 +1320,7 @@ int EVE_FUN::mana_060(/*◆財務・経理*/int S,int AI){
 int EVE_FUN::mana_061(/*株式買収・自社*/int S,int AI){
 	
 	_MANA_CUL____________________________________________
-		shop[S].kabu_cnt[0] -= shop[S].kabu_buy;
+		shop[S].kabu_max -= shop[S].kabu_buy;
 		shop[S].kabu_price  += shop[S].kabu_price * shop[S].kabu_buy / shop[S].kabu_max;
 	_MANA_END____________________________________________
 
@@ -3124,6 +3124,7 @@ int EVE_FUN::mana_265(/*新たな狩場セール*/int S,int AI){
 int EVE_FUN::mana_266(/*凱旋セール*/int S,int AI){
 	
 	_MANA_CUL____________________________________________
+
 	_MANA_END____________________________________________
 
 	return 0;
@@ -3483,9 +3484,9 @@ int EVE_FUN::mana_setumei(){
     stream << "閃ける武器が増える";
 	mana[121].help = stream.str();stream.str("");
 
-	stream << "倉庫容量を100増やす。--";
+	stream << "倉庫容量を200増やす。--";
 	stream << "在庫が溢れると、毎日超過数×10Gの資金を消費する。--";
-	stream << "倉庫容量 " << shop[P].souko_max << " 個 → "<< shop[P].souko_max+100 << "個";
+	stream << "倉庫容量 " << shop[P].souko_max << " 個 → "<< shop[P].souko_max+200 << "個";
 	mana[122].help = stream.str();stream.str("");
 
 	stream << "工房を強化し製造力を高める。--";

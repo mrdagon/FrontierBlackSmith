@@ -647,7 +647,7 @@ int HUNTER::sell_item(){
             if(S == P){
                 draw.sell_t[W] += 10;
                 if(draw.sell_t[W] > 30) draw.sell_t[W] = 30;
-                sys.total_sell+=PRI;
+                sys.total_sell++;
                 sys.total_sellc[wep[W].type]+=PRI;
             }
             shop[S].g_sell_t += PRI;

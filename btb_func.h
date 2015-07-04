@@ -555,47 +555,51 @@ int FUN::tutorial(int N,int OK){
 int FUN::game_rerecord(){
     //結果の更新
     //自店勝利のみ
-    int t_s = 0;
-    int t_m = 0;
-    int t_c = 0;
-    int t_h = 0;
+    int t_s = 0;//販売額
+	int t_m = 0;
+	int t_c = 0;
+	int t_h = 0;
 
+	//製造費と人件費は負の数
     for(int i=0;i<DAY_M;i++){
         t_s += shop[P].sellc_day[i];
         t_m += shop[P].seizc_day[i];
-        t_c += shop[P].seiz_day[i];
+        t_c -= shop[P].seiz_day[i];
     }
 
     for(int i=0;i<MANTH_M;i++){
-        t_h += shop[P].emp_mon[i];
+        t_h -= shop[P].emp_mon[i];
     }
 
     if(sys.score_record[data.mode][0] < t_s)				sys.score_record[data.mode][0] = t_s;//販売数
     if(sys.score_record[data.mode][1] < shop[P].g_cust)		sys.score_record[data.mode][1] = shop[P].g_cust;//来客数
-    if(sys.score_record[data.mode][2] < data.goal_sell_t)	sys.score_record[data.mode][2] = data.goal_sell_t;//売り上げ-合計
-    if(sys.score_record[data.mode][3] < data.goal_sell[0])	sys.score_record[data.mode][3] = data.goal_sell[0];//売り上げ
-    if(sys.score_record[data.mode][4] < data.goal_sell[1])	sys.score_record[data.mode][4] = data.goal_sell[1];//売り上げ
-    if(sys.score_record[data.mode][5] < data.goal_sell[2])	sys.score_record[data.mode][5] = data.goal_sell[2];//売り上げ
-    if(sys.score_record[data.mode][6] < data.goal_sell[3])	sys.score_record[data.mode][6] = data.goal_sell[3];//売り上げ
+	if (sys.score_record[data.mode][2] < shop[P].g_sell_t)	sys.score_record[data.mode][2] = shop[P].g_sell_t;//売り上げ-合計
+	if (sys.score_record[data.mode][3] < shop[P].g_sell[0])	sys.score_record[data.mode][3] = shop[P].g_sell[0];//売り上げ
+	if (sys.score_record[data.mode][4] < shop[P].g_sell[1])	sys.score_record[data.mode][4] = shop[P].g_sell[1];//売り上げ
+	if (sys.score_record[data.mode][5] < shop[P].g_sell[2])	sys.score_record[data.mode][5] = shop[P].g_sell[2];//売り上げ
+	if (sys.score_record[data.mode][6] < shop[P].g_sell[3])	sys.score_record[data.mode][6] = shop[P].g_sell[3];//売り上げ
     if(sys.score_record[data.mode][7] < t_m)				sys.score_record[data.mode][7] = t_m;//製造数
     if(sys.score_record[data.mode][8] < t_c)				sys.score_record[data.mode][8] = t_c;//製造費
     if(sys.score_record[data.mode][9] < t_h)				sys.score_record[data.mode][9] = t_h;//人件費
-    if(sys.score_record[data.mode][10] < data.goal_turu)	sys.score_record[data.mode][10] = data.goal_turu;//つるはし製造
+	if (sys.score_record[data.mode][10] < shop[P].g_turu)	sys.score_record[data.mode][10] = shop[P].g_turu;//つるはし製造
     if(sys.score_record[data.mode][11] < shop[P].kabu_price)sys.score_record[data.mode][11] = (int)shop[P].kabu_price;//株価
-    if(sys.score_record[data.mode][12] < data.goal_wepcre)	sys.score_record[data.mode][12] = data.goal_wepcre;//開発数
+	if (sys.score_record[data.mode][12] < shop[P].g_wepcre)	sys.score_record[data.mode][12] = shop[P].g_wepcre;//開発数
     if(sys.score_record[data.mode][14] < data.jinkou)		sys.score_record[data.mode][14] = data.jinkou;//人口
     if(sys.score_record[data.mode][15] < shop[P].money)		sys.score_record[data.mode][15] = int(shop[P].money);//資金
 
     if( data.game_over / 100 != P ) return 1;//敗北時
 
-    if(sys.score_record[data.mode][13] > data.day)			sys.score_record[data.mode][13] = data.day;//クリア日数
+	if (sys.score_record[data.mode][13] > data.day || sys.score_record[data.mode][13] <= 0)	sys.score_record[data.mode][13] = data.day;//クリア日数
     sys.score_record[data.mode][16]++;//クリア回数
     if(sys.score_record[data.mode][17] < data.nando+1) sys.score_record[data.mode][17] = data.nando+1;//難易度
 
     //難易度の開放        
     if( sys.nanndo_flag < data.nando+1 ) sys.nanndo_flag = data.nando+1;
 
-    sys.win_cnt[data.game_over % 100]++;
+	if (data.game_over % 100 < 13)
+	{
+		sys.win_cnt[data.game_over % 100]++;
+	}
 
     return 1;
 }
@@ -663,7 +667,7 @@ int FUN::medal_check(){
                 }
                 break;
             case 26://チュートリアル
-                for(int i=0;i<100;i++)
+                for(int i=0;i<17;i++)
                 {
                     if(sys.help_flag[i] > 0 ) OK++;					
                 }
@@ -677,19 +681,37 @@ int FUN::medal_check(){
             case 33:
             case 34:
             case 35:
-            case 36:
+			case 36:
+				OK = sys.win_cnt[M - 27];
+				break;
             case 37:
+				//10は没なので飛ぶ
+				OK = sys.win_cnt[11];
+				break;
             case 38:
-                OK = sys.win_cnt[M-27];
+				//
+				for (int i = 0; i < 12; ++i)
+				{
+					if (sys.win_cnt[i] > 0) OK++;
+				}
                 break;
-            case 39://エンディング
+            case 39://合計勝利回数系
             case 40:
-                OK = sys.win_cnt[M-27];
-                break;
-            case 41://シナリオ
+            case 41:
             case 42:
             case 43:
-            case 44:
+				sys.medal_nanndo[39] = 1;
+				sys.medal_nanndo[40] = 3;
+				sys.medal_nanndo[41] = 10;
+				sys.medal_nanndo[42] = 30;
+				sys.medal_nanndo[43] = 100;
+
+				for (int i = 0; i < 12; ++i)
+				{
+					OK += sys.win_cnt[i];
+				}
+				break;
+            case 44://各モード勝利数
             case 45:
             case 46:
             case 47:
@@ -740,6 +762,8 @@ int FUN::medal_check(){
             case 92:
             case 93:
             case 94:
+				if (sys.medal_nanndo[M] >= 4) sys.medal_nanndo[M] = 4;
+				if (sys.medal_nanndo[M] <= 0) sys.medal_nanndo[M] = 1;
                 OK = sys.score_record[(M-41)/3][17];
                 break;
             case 95://アンケート
@@ -2506,7 +2530,7 @@ int FUN::make_start(){
     wind.syu_now = 1;	
 
     //ストーリーモード以外はイベント変化
-    if( data.mode != 0){
+    //if( data.mode != 0){
         for(int E=101;E<EMP_M;E++){
             if(emp[E].req_turn == 0) continue;
             emp[E].req_turn--;
@@ -2515,7 +2539,7 @@ int FUN::make_start(){
                 emp[E].select_shop();
             }
         }
-    }
+    //}
 
     //初期武器
     for(int S=0;S<5;S++){
