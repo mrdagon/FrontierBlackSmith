@@ -231,6 +231,9 @@ int FUN::game_over(){
     game_rerecord();//記録更新処理
     medal_check();//メダル取得判定
 
+	//モード開放チェック
+
+
     return SEL;
 }
 int FUN::select_mode(){
@@ -601,6 +604,19 @@ int FUN::game_rerecord(){
 		sys.win_cnt[data.game_over % 100]++;
 	}
 
+	int total_win = 0;
+	for (auto& it : sys.win_cnt)
+	{
+		total_win += it;
+	}
+	
+	for (int i = 0; i < 18; ++i)
+	{
+		if ( !sys.play_flag[i] && total_win > i )
+		{
+			sys.play_flag[i] = true;
+		}
+	}
     return 1;
 }
 int FUN::medal_check(){
@@ -807,67 +823,51 @@ int FUN::medal_check(){
         switch(M){
             case 0:
                 sys.play_flag[1] = true;
-                draw.kakunin("「自由経済」が選択可能に！",1);
             break;		
             case 98:
                 sys.play_flag[2] = true;
-                draw.kakunin("「メダルの王」が選択可能に！",1);
             break;
             case 7:
                 sys.play_flag[3] = true;
-                draw.kakunin("「拝金主義」が選択可能に！",1);
             break;
             case 4:
                 sys.play_flag[4] = true;
-                draw.kakunin("「千客万来」が選択可能に！",1);
             break;
             case 1:
                 sys.play_flag[5] = true;
-                draw.kakunin("「株を育てて」が選択可能に！",1);
             break;
             case 44:
                 sys.play_flag[6] = true;
-                draw.kakunin("「シェアＮｏ１」が選択可能に！",1);
             break;
             case 60:
                 sys.play_flag[7] = true;
-                draw.kakunin("「つるはし大好き」が選択可能に！",1);
             break;
             case 63:
                 sys.play_flag[8] = true;
-                draw.kakunin("「開拓最前線」が選択可能に！",1);
             break;
             case 65:
                 sys.play_flag[9] = true;
-                draw.kakunin("「無双の斧」が選択可能に！",1);
             break;
             case 68:
                 sys.play_flag[10] = true;
-                draw.kakunin("「究極の槍」が選択可能に！",1);
             break;
             case 71:
                 sys.play_flag[11] = true;
-                draw.kakunin("「至高の剣」が選択可能に！",1);
             break;
             case 74:
                 sys.play_flag[12] = true;
-                draw.kakunin("「完璧の弓」が選択可能に！",1);
             break;
             case 13:
                 sys.play_flag[13] = true;
-                draw.kakunin("「ウェポンマイスター」が選択可能に！",1);
             break;
             case 15:
                 sys.play_flag[14] = true;
-                draw.kakunin("「閃き道場」が選択可能に！",1);
             break;
             case 5:
                 sys.play_flag[15] = true;
-                draw.kakunin("「大ハンター時代」が選択可能に！",1);
             break;
             case 2:
                 sys.play_flag[17] = true;
-                draw.kakunin("「時代の終わり」が選択可能に！",1);
             break;
             case 95:
                 sys.play_flag[2] = true;
@@ -2610,10 +2610,11 @@ int FUN::make_start(){
         shop[P].money = 1000000 * (4 - data.nando);
         if(data.nando == 0)
         {
-            shop[P].ken_b[0] += 5;
-            shop[P].ken_b[1] += 5;
-            shop[P].ken_b[2] += 5;
+            shop[P].ken_b[0] += 20;
+            shop[P].ken_b[1] += 20;
+            shop[P].ken_b[2] += 20;
             shop[P].money = 5000000;
+			shop[P].p_mp += 1;
         }
     }
 
@@ -2636,6 +2637,7 @@ int FUN::make_start(){
     data.goal_money   *= data.nando + 1;
     data.goal_taikai  *= data.nando + 1;
     data.goal_boss	  *= data.nando + 1;
+	if (data.goal_boss > 99) data.goal_boss = 99;
 
     for(int W=0;W<WEP_M;W++){
         data.wep_ganso[W] = -1;
@@ -2936,7 +2938,7 @@ int FUN::mode08_set(){
     data.jinkou_up	  = 15;
     data.jinkou_start = 70;
     //勝利条件
-    data.goal_boss = 30;
+    data.goal_boss = 25;
 
     //初期従業員
     emp[1].plus(0);

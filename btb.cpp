@@ -33,7 +33,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
 
 	fun.sys_load();
 
-	SetMainWindowText( "Frontier Black Smith ver1.07" ) ;
+	SetMainWindowText( "Frontier Black Smith ver1.08" ) ;
 	SetDoubleStartValidFlag( TRUE );//多重起動禁止
 	SetAlwaysRunFlag(TRUE);//常にアクティブ
 	
